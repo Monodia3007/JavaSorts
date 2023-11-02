@@ -14,33 +14,6 @@ import static org.junit.jupiter.api.Assertions.assertArrayEquals;
  */
 class SortingAlgorithmTest {
     private static final Logger logger = Logger.getLogger(SortingAlgorithmTest.class.getName());
-
-    /**
-     * A dummy sorting algorithm implementation that sorts a list of integers using the {@link Collections#sort(List)} method.
-     *
-     * <p>This class extends the {@link SortingAlgorithm} abstract class.</p>
-     *
-     * <p>Usage:
-     *
-     * <pre>{@code
-     * DummySortAlgorithm algorithm = new DummySortAlgorithm();
-     * List<Integer> myList = Arrays.asList(5, 2, 9, 1, 3);
-     * algorithm.sort(myList);
-     * }</pre>
-     * </p>
-     */
-    private static class DummySortAlgorithm extends SortingAlgorithm {
-        /**
-         * Sorts the given list in ascending order.
-         *
-         * @param list the list to be sorted
-         */
-        @Override
-        public void sort(List<Integer> list) {
-            Collections.sort(list);
-        }
-    }
-
     private final SortingAlgorithm sortingAlgorithm = new DummySortAlgorithm();
 
     /**
@@ -50,7 +23,7 @@ class SortingAlgorithmTest {
     void generateRandomListShouldGenerateCorrectSizeList() {
         logger.info("Checking list generation correctness...");
         List<Integer> list = SortingAlgorithm.generateRandomList(10);
-        assert(list.size() == 10);
+        assert (list.size() == 10);
     }
 
     /**
@@ -76,5 +49,31 @@ class SortingAlgorithmTest {
         StringBuilder sb = new StringBuilder();
         sortingAlgorithm.displayAndTime(list, "DummySortAlgorithm", sb);
         assertArrayEquals(new Integer[]{1, 2, 3, 4, 5}, list.toArray(new Integer[0]));
+    }
+
+    /**
+     * A dummy sorting algorithm implementation that sorts a list of integers using the {@link Collections#sort(List)} method.
+     *
+     * <p>This class extends the {@link SortingAlgorithm} abstract class.</p>
+     *
+     * <p>Usage:
+     *
+     * <pre>{@code
+     * DummySortAlgorithm algorithm = new DummySortAlgorithm();
+     * List<Integer> myList = Arrays.asList(5, 2, 9, 1, 3);
+     * algorithm.sort(myList);
+     * }</pre>
+     * </p>
+     */
+    private static class DummySortAlgorithm extends SortingAlgorithm {
+        /**
+         * Sorts the given list in ascending order.
+         *
+         * @param list the list to be sorted
+         */
+        @Override
+        public void sort(List<Integer> list) {
+            Collections.sort(list);
+        }
     }
 }

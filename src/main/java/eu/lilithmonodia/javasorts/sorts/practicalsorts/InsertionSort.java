@@ -26,7 +26,7 @@ public class InsertionSort extends SortingAlgorithm {
                greater than key, to one position ahead
                of their current position */
             while (j >= 0 && list.get(j) > key) {
-                list.set(j + 1 , list.get(j));
+                list.set(j + 1, list.get(j));
                 j = j - 1;
             }
             list.set(j + 1, key);

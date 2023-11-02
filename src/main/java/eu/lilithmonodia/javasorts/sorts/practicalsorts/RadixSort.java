@@ -14,23 +14,10 @@ import java.util.List;
  */
 public class RadixSort extends SortingAlgorithm {
     /**
-     * Sorts the given list of integers in ascending order using the Radix Sort algorithm.
-     *
-     * @param list the list of integers to be sorted
-     */
-    @Override
-    public void sort(List<Integer> list) {
-        int maxValue = findMax(list);
-
-        for (int exp = 1; maxValue / exp > 0; exp *= 10) {
-            countSort(list, exp);
-        }
-    }
-
-    /**
      * Finds the maximum value in the given list of integers.
      *
      * @param list the list of integers
+     *
      * @return the maximum value in the list
      */
     private static int findMax(List<Integer> list) {
@@ -48,7 +35,7 @@ public class RadixSort extends SortingAlgorithm {
      * The list will be sorted in non-decreasing order.
      *
      * @param list the list of integers to sort
-     * @param exp the exponent value used for sorting (usually powers of 10)
+     * @param exp  the exponent value used for sorting (usually powers of 10)
      */
     private static void countSort(List<Integer> list, int exp) {
         int n = list.size();
@@ -73,6 +60,20 @@ public class RadixSort extends SortingAlgorithm {
 
         for (int i = 0; i < n; i++) {
             list.set(i, output.get(i));
+        }
+    }
+
+    /**
+     * Sorts the given list of integers in ascending order using the Radix Sort algorithm.
+     *
+     * @param list the list of integers to be sorted
+     */
+    @Override
+    public void sort(List<Integer> list) {
+        int maxValue = findMax(list);
+
+        for (int exp = 1; maxValue / exp > 0; exp *= 10) {
+            countSort(list, exp);
         }
     }
 }

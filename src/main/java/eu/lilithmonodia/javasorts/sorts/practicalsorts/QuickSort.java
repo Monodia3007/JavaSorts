@@ -43,6 +43,7 @@ public class QuickSort extends SortingAlgorithm {
      * @param list the list to be partitioned
      * @param low  the starting index of the partition range (inclusive)
      * @param high the ending index of the partition range (inclusive)
+     *
      * @return the index of the pivot element after partitioning
      */
     private int partition(List<Integer> list, int low, int high) {

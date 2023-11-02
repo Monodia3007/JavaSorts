@@ -4,7 +4,6 @@ import eu.lilithmonodia.javasorts.database.DatabaseLogger;
 import eu.lilithmonodia.javasorts.sorts.SortingAlgorithm;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 import java.util.concurrent.*;
@@ -95,8 +94,8 @@ public class JavaSortsMain {
      * Each sorting task creates a separate copy of the list and performs sorting using the specified algorithm.
      * The sorting task logs the sorted list along with the algorithm name.
      *
-     * @param list the list to be sorted
-     * @param algorithmNames an array of algorithm names to be used for sorting
+     * @param list                    the list to be sorted
+     * @param algorithmNames          an array of algorithm names to be used for sorting
      * @param sortingAlgorithmFactory a factory object that provides instances of sorting algorithms
      */
     private static void performAndLogSortingTasks(List<Integer> list, String[] algorithmNames, SortingAlgorithmFactory sortingAlgorithmFactory) {
@@ -121,8 +120,8 @@ public class JavaSortsMain {
      * This method performs sorting on a given list using a specified sorting algorithm.
      * It logs the sorted list along with the algorithm name and duration to the database and prints a log message.
      *
-     * @param list the list to be sorted
-     * @param name the name of the sorting algorithm to be used
+     * @param list                    the list to be sorted
+     * @param name                    the name of the sorting algorithm to be used
      * @param sortingAlgorithmFactory a factory object that provides instances of sorting algorithms
      */
     private static void sortAndLog(List<Integer> list, String name, SortingAlgorithmFactory sortingAlgorithmFactory) {
@@ -141,12 +140,13 @@ public class JavaSortsMain {
      * The output string should contain the duration formatted as "took <duration>".
      *
      * @param output the output string from which to extract the duration
+     *
      * @return the extracted duration, or "Time not available" if no duration is found in the output string
      */
     private static String extractTimeFromOutput(String output) {
         Pattern pattern = Pattern.compile("took (.*)");
         Matcher matcher = pattern.matcher(output);
-        return (matcher.find()) ?  matcher.group(1) : "Time not available";
+        return (matcher.find()) ? matcher.group(1) : "Time not available";
     }
 
     /**

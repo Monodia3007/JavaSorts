@@ -35,8 +35,8 @@ public class DatabaseLogger {
      * Adds a log entry to the database.
      *
      * @param sortingTime the time taken for the sorting process
-     * @param listSize the size of the list being sorted
-     * @param algorithm the algorithm used for sorting
+     * @param listSize    the size of the list being sorted
+     * @param algorithm   the algorithm used for sorting
      */
     public void addLog(String sortingTime, int listSize, String algorithm) {
         try (Connection conn = this.connect();

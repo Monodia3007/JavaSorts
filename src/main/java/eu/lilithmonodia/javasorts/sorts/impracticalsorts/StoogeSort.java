@@ -25,8 +25,8 @@ public class StoogeSort extends SortingAlgorithm {
      * within the given range [l, h].
      *
      * @param list the list of integers to be sorted
-     * @param l the starting index of the range to be sorted (inclusive)
-     * @param h the ending index of the range to be sorted (inclusive)
+     * @param l    the starting index of the range to be sorted (inclusive)
+     * @param h    the ending index of the range to be sorted (inclusive)
      */
     public void stoogeSort(List<Integer> list, int l, int h) {
         if (l >= h)

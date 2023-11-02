@@ -14,6 +14,22 @@ public class BozoSort extends SortingAlgorithm {
     private static final Random RANDOM = new Random();
 
     /**
+     * Checks whether the given list of integers is sorted in non-decreasing order.
+     *
+     * @param list The list of integers to be checked.
+     *
+     * @return A boolean value indicating whether the list is sorted or not.
+     */
+    private static boolean isSorted(List<Integer> list) {
+        for (int i = 0; i < list.size() - 1; i++) {
+            if (list.get(i) > list.get(i + 1)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
      * Sorts the given list of integers using a randomly generated permutation until the list is sorted.
      *
      * @param list The list of integers to be sorted.
@@ -25,20 +41,5 @@ public class BozoSort extends SortingAlgorithm {
             int j = RANDOM.nextInt(list.size());
             Collections.swap(list, i, j);
         }
-    }
-
-    /**
-     * Checks whether the given list of integers is sorted in non-decreasing order.
-     *
-     * @param list The list of integers to be checked.
-     * @return A boolean value indicating whether the list is sorted or not.
-     */
-    private static boolean isSorted(List<Integer> list) {
-        for (int i = 0; i < list.size() - 1; i++) {
-            if (list.get(i) > list.get(i + 1)) {
-                return false;
-            }
-        }
-        return true;
     }
 }

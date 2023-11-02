@@ -1,4 +1,5 @@
 package eu.lilithmonodia.javasorts.sorts.impracticalsorts;
+
 import eu.lilithmonodia.javasorts.sorts.SortingAlgorithm;
 
 import java.util.ArrayList;

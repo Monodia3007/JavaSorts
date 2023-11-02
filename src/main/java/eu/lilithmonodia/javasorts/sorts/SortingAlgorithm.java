@@ -12,16 +12,10 @@ import java.util.Random;
 public abstract class SortingAlgorithm {
 
     /**
-     * Sorts the given list of integers in ascending order.
-     *
-     * @param list the list of integers to be sorted
-     */
-    public abstract void sort(List<Integer> list);
-
-    /**
      * Generates a list of random integers.
      *
      * @param size the size of the random list to generate
+     *
      * @return a list of random integers with the specified size
      */
     public static List<Integer> generateRandomList(int size) {
@@ -32,6 +26,13 @@ public abstract class SortingAlgorithm {
         }
         return list;
     }
+
+    /**
+     * Sorts the given list of integers in ascending order.
+     *
+     * @param list the list of integers to be sorted
+     */
+    public abstract void sort(List<Integer> list);
 
     /**
      * Display and time the sorting algorithm with the given list.

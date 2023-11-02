@@ -1,10 +1,9 @@
 package eu.lilithmonodia.javasorts.sorts;
 
+import eu.lilithmonodia.javasorts.SortingAlgorithmFactory;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import eu.lilithmonodia.javasorts.SortingAlgorithmFactory;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -44,7 +43,7 @@ public class SortingAlgorithmsTest {
         List<Integer> list = Arrays.asList(5, 3, 1, 4, 2);
         for (String algorithm : ALGORITHMS) {
             SortingAlgorithm sorter = factory.getSortingAlgorithm(algorithm);
-            List<Integer> copy =  new ArrayList<>(list); // Creating a copy of list as each sorter modifies the list.
+            List<Integer> copy = new ArrayList<>(list); // Creating a copy of list as each sorter modifies the list.
             sorter.sort(copy);
             assertArrayEquals(new Integer[]{1, 2, 3, 4, 5}, copy.toArray(new Integer[0]));
         }
@@ -62,7 +61,7 @@ public class SortingAlgorithmsTest {
         List<Integer> list = Arrays.asList();
         for (String algorithm : ALGORITHMS) {
             SortingAlgorithm sorter = factory.getSortingAlgorithm(algorithm);
-            List<Integer> copy =  new ArrayList<>(list); // Creating a copy of list as each sorter modifies the list.
+            List<Integer> copy = new ArrayList<>(list); // Creating a copy of list as each sorter modifies the list.
             sorter.sort(copy);
             assertTrue(copy.isEmpty());
         }
@@ -80,7 +79,7 @@ public class SortingAlgorithmsTest {
         List<Integer> list = Arrays.asList(3);
         for (String algorithm : ALGORITHMS) {
             SortingAlgorithm sorter = factory.getSortingAlgorithm(algorithm);
-            List<Integer> copy =  new ArrayList<>(list); // Creating a copy of list as each sorter modifies the list.
+            List<Integer> copy = new ArrayList<>(list); // Creating a copy of list as each sorter modifies the list.
             sorter.sort(copy);
             assertArrayEquals(new Integer[]{3}, copy.toArray(new Integer[0]));
         }
