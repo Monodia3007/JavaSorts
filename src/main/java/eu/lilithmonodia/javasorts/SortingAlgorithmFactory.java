@@ -26,6 +26,13 @@ public class SortingAlgorithmFactory {
         sortingAlgorithms.put("BogoSort", new BogoSort());
         sortingAlgorithms.put("SlowSort", new SlowSort());
         sortingAlgorithms.put("BubbleSort", new BubbleSort());
+        sortingAlgorithms.put("SelectionSort", new SelectionSort());
+        sortingAlgorithms.put("InsertionSort", new InsertionSort());
+        sortingAlgorithms.put("BozoSort", new BozoSort());
+        sortingAlgorithms.put("StoogeSort", new StoogeSort());
+        sortingAlgorithms.put("StalinSort", new StalinSort());
+        sortingAlgorithms.put("ShellSort", new ShellSort());
+        sortingAlgorithms.put("RadixSort", new RadixSort());
     }
 
     /**
