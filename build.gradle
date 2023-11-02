@@ -1,0 +1,43 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.0.13'
+}
+
+group = 'eu.lilithmonodia'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.jetbrains:annotations:24.0.0'
+    implementation 'org.postgresql:postgresql:42.2.27'
+    implementation 'com.google.code.gson:gson:2.8.9'
+    implementation 'commons-io:commons-io:2.11.0'
+    testImplementation platform('org.junit:junit-bom:5.9.1')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+javafx {
+    version = '17.0.8'
+    modules = ['javafx.controls']
+}
+
+test {
+    useJUnitPlatform()
+}
+
+application {
+    mainClassName = 'eu.lilithmonodia.javasorts.JavaFXSortsMain'
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'eu.lilithmonodia.javasorts.JavaSortsMain'
+    }
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
