@@ -23,7 +23,7 @@ import static java.lang.System.exit;
 public class JavaSortsMain {
 
     private static final Logger LOGGER = Logger.getLogger(JavaSortsMain.class.getName());
-    private static final long TIMEOUT = 300;  // consider to adjust this value
+    private static final long TIMEOUT = 120;  // consider to adjust this value
     private static final TimeUnit UNIT = TimeUnit.SECONDS;
     private static final DatabaseLogger DB_LOGGER = new DatabaseLogger();
 
