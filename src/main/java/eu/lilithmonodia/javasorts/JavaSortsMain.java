@@ -15,27 +15,21 @@ import java.util.regex.Pattern;
 import static eu.lilithmonodia.javasorts.sorts.SortingAlgorithm.generateRandomList;
 import static java.lang.System.exit;
 
-/**
- * The JavaSortsMain class is a command-line program that allows the user to generate a random list of integers
- * and apply various sorting algorithms to it. The program displays the execution time of each algorithm and logs
- * it to a database.
- */
 public class JavaSortsMain {
-
     private static final Logger LOGGER = Logger.getLogger(JavaSortsMain.class.getName());
     private static final long TIMEOUT = 120;  // consider to adjust this value
     private static final TimeUnit UNIT = TimeUnit.SECONDS;
     private static final DatabaseLogger DB_LOGGER = new DatabaseLogger();
 
     /**
-     * The main method is the entry point of the program. It initializes a SortingAlgorithmFactory
-     * to create sorting algorithm objects, stores the names of the algorithms in an array, and
-     * executes a loop to repeatedly prompt the user for input. It generates a random list of
-     * integers based on the user's input, performs sorting tasks using various algorithms, and
-     * logs the result. The loop continues until the user enters -1. After the loop ends, it
-     * prints a termination message and exits the program.
+     * The main method of the program.
+     * This method is responsible for executing the sorting tasks using different sorting algorithms.
+     * It prompts the user for the length of the list, generates a random list of that length,
+     * and performs the sorting tasks using the sorting algorithm factory.
+     * It continues to prompt the user for the length of the list until the user enters -1, at which point the program terminates.
      *
-     * @param args the command line arguments (not used)
+     * @param args the command-line arguments
+
      */
     public static void main(String[] args) {
         SortingAlgorithmFactory sortingAlgorithmFactory = new SortingAlgorithmFactory();
@@ -52,28 +46,23 @@ public class JavaSortsMain {
             performAndLogSortingTasks(list, algorithmNames, sortingAlgorithmFactory);
         }
 
-        System.out.println("Program has been terminated.");
+        LOGGER.log(Level.INFO, "Program has been terminated.");
         exit(0);
     }
 
     /**
-     * This method prompts the user to enter the desired length of a list.
-     * The user can enter a number or 'q' to quit the program. If the user
-     * enters 'q', the method returns -1 to indicate program termination.
-     * If the user enters a number, it is parsed as an integer and returned
-     * as the list length.
+     * Prompts the user to enter the desired length of a list.
      *
-     * @return the desired length of the list, or -1 if the user chooses to quit
+     * @return The length of the list provided by the user, or -1 if the user chooses to quit.
      */
     private static int getListLengthFromUserInput() {
         Scanner scanner = new Scanner(System.in);
         int listLength;
 
         while (true) {
-            System.out.println("Enter the desired length of the list or 'q' to quit: ");
+            LOGGER.log(Level.INFO, "Enter the desired length of the list or 'q' to quit: ");
             String userInput = scanner.next();
 
-            // End the program if user inputs 'q'
             if (userInput.equalsIgnoreCase("q")) {
                 return -1;
             }
@@ -82,7 +71,7 @@ public class JavaSortsMain {
                 listLength = Integer.parseInt(userInput);
                 break;
             } catch (NumberFormatException e) {
-                System.out.println("Invalid input! Please enter a number.");
+                LOGGER.log(Level.INFO, "Invalid input! Please enter a number.");
             }
         }
 
@@ -90,15 +79,11 @@ public class JavaSortsMain {
     }
 
     /**
-     * This method performs sorting tasks on a given list using multiple sorting algorithms.
-     * It creates a fixed thread pool with a number of threads equal to the number of algorithm names provided.
-     * For each algorithm name, it submits a sorting task to the thread pool.
-     * Each sorting task creates a separate copy of the list and performs sorting using the specified algorithm.
-     * The sorting task logs the sorted list along with the algorithm name.
+     * Executes sorting tasks using different sorting algorithms and logs the execution of each task.
      *
-     * @param list                    the list to be sorted
-     * @param algorithmNames          an array of algorithm names to be used for sorting
-     * @param sortingAlgorithmFactory a factory object that provides instances of sorting algorithms
+     * @param list                    the list of integers to be sorted
+     * @param algorithmNames          an array of strings representing the names of the sorting algorithms to be used
+     * @param sortingAlgorithmFactory the factory object used to create instances of sorting algorithms
      */
     private static void performAndLogSortingTasks(List<Integer> list, String[] algorithmNames, SortingAlgorithmFactory sortingAlgorithmFactory) {
         ExecutorService executor = Executors.newFixedThreadPool(algorithmNames.length);
@@ -106,33 +91,23 @@ public class JavaSortsMain {
         List<Future<?>> futures = new ArrayList<>();
         for (String name : algorithmNames) {
             Future<?> future = executor.submit(() -> {
-                List<Integer> listCopy = new ArrayList<>(list); // separate copy for each sort
+                List<Integer> listCopy = new ArrayList<>(list);
                 sortAndLog(listCopy, name, sortingAlgorithmFactory);
             });
-
             futures.add(future);
         }
 
         executor.shutdown();
         waitForTasksCompletion(futures);
-        System.out.println("All tasks have completed execution.");
+        LOGGER.log(Level.INFO, "All tasks have completed execution.");
     }
 
     /**
-     * This method performs sorting on a given list using a specified algorithm and logs the sorted list along with the algorithm name.
-     * It first creates a StringBuilder object to store the output of the sorting algorithm.
-     * It then retrieves the sorting algorithm instance from the provided SortingAlgorithmFactory using the algorithm name.
-     * Next, it creates a single-threaded ExecutorService to run the sorting task.
-     * The sorting task is submitted to the ExecutorService, which runs it asynchronously.
-     * The execution of the sorting task is limited by a timeout value and time unit.
-     * If the sorting task completes successfully within the specified timeout, the result is retrieved from the Future object.
-     * If the sorting task is interrupted or encounters an exception during execution, an appropriate logging statement is generated.
-     * Finally, the ExecutorService is shut down and the sorted list is logged to a database using the DB_LOGGER object.
-     * A logging statement is also generated to inform the completion of the sorting task along with the sorting algorithm name and execution time.
+     * Sorts the given list using the specified sorting algorithm and logs the duration of the sorting process.
      *
-     * @param list                    the list to be sorted
-     * @param name                    the name of the sorting algorithm
-     * @param sortingAlgorithmFactory the factory object that provides instances of sorting algorithms
+     * @param list                     the list of integers to be sorted
+     * @param name                     the name of the sorting algorithm to be used
+     * @param sortingAlgorithmFactory  the factory object used to create the sorting algorithm
      */
     private static void sortAndLog(List<Integer> list, String name, SortingAlgorithmFactory sortingAlgorithmFactory) {
         StringBuilder outputSb = new StringBuilder();
@@ -143,10 +118,13 @@ public class JavaSortsMain {
 
         try {
             future.get(JavaSortsMain.TIMEOUT, JavaSortsMain.UNIT);
-        } catch (InterruptedException | ExecutionException e) {
-            LOGGER.log(Level.SEVERE, "The execution of the " + name + " algorithm was interrupted or failed.", e);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();  // Preserve interrupt status
+            LOGGER.log(Level.SEVERE, "The execution of the {0} algorithm was interrupted or failed.", new Object[]{name});
+        } catch (ExecutionException e) {
+            LOGGER.log(Level.SEVERE, "The execution of the {0} algorithm was interrupted or failed.", new Object[]{name});
         } catch (TimeoutException e) {
-            LOGGER.log(Level.SEVERE, "The execution of the " + name + " algorithm exceeded the time limit.");
+            LOGGER.log(Level.SEVERE, "The execution of the {0} algorithm exceeded the time limit.", new Object[]{name});
         } finally {
             executor.shutdown();
         }
@@ -154,18 +132,17 @@ public class JavaSortsMain {
         String formattedDuration = extractTimeFromOutput(outputSb.toString());
 
         if (!"Time not available".equals(formattedDuration)) {
-            LOGGER.log(Level.INFO, "Sorting with " + name + " algorithm on list of size " + list.size() + " took " + formattedDuration);
+            LOGGER.log(Level.INFO, "Sorting with {0} algorithm on list of size {1} took {2}",
+                    new Object[]{name, list.size(), formattedDuration});
             DB_LOGGER.addLog(formattedDuration, list.size(), name);
         }
     }
 
     /**
-     * This method extracts the duration from the output string.
-     * The output string should contain the duration formatted as "took <duration>".
+     * Extracts the time information from the given output string.
      *
-     * @param output the output string from which to extract the duration
-     *
-     * @return the extracted duration, or "Time not available" if no duration is found in the output string
+     * @param output the output string from which to extract the time information
+     * @return the extracted time information if found, or "Time not available" if not found
      */
     private static String extractTimeFromOutput(String output) {
         Pattern pattern = Pattern.compile("took (.*)");
@@ -174,20 +151,18 @@ public class JavaSortsMain {
     }
 
     /**
-     * This method waits for the completion of a list of tasks represented by Futures.
-     * <p>
-     * It iterates over each Future in the given list and waits for the task to complete.
-     * If the task is interrupted or encounters an exception during execution, an error
-     * message is logged using the LOGGER with Level.SEVERE.
-     * If the task exceeds the specified timeout, a separate error message is logged.
+     * Waits for the completion of a list of Future tasks.
      *
-     * @param futures the list of Futures representing the tasks to wait for
+     * @param futures the list of Future tasks to wait for completion
      */
     private static void waitForTasksCompletion(List<Future<?>> futures) {
         for (Future<?> future : futures) {
             try {
                 future.get(TIMEOUT, UNIT);
-            } catch (InterruptedException | ExecutionException e) {
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();  // Preserve interrupt status
+                LOGGER.log(Level.SEVERE, "Task execution was interrupted or failed.", e);
+            } catch (ExecutionException e) {
                 LOGGER.log(Level.SEVERE, "Task execution was interrupted or failed.", e);
             } catch (TimeoutException e) {
                 LOGGER.log(Level.SEVERE, "Task execution exceeded the time limit.", e);
