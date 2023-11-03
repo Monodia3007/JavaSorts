@@ -16,14 +16,14 @@ public class ShellSort extends SortingAlgorithm {
      */
     @Override
     public void sort(List<Integer> list) {
-        int N = list.size();
+        int n = list.size();
         int h = 1;
-        while (h < N / 3) {
+        while (h < n / 3) {
             h = 3 * h + 1;
         }
 
         while (h >= 1) {
-            for (int i = h; i < N; i++) {
+            for (int i = h; i < n; i++) {
                 for (int j = i; j >= h && list.get(j) < list.get(j - h); j -= h) {
                     int temp = list.get(j);
                     list.set(j, list.get(j - h));

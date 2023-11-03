@@ -22,15 +22,15 @@ public class SelectionSort extends SortingAlgorithm {
         // One by one move boundary of unsorted sub-array
         for (int i = 0; i < n - 1; i++) {
             // Find the minimum element in unsorted array
-            int min_idx = i;
+            int minIndex = i;
             for (int j = i + 1; j < n; j++) {
-                if (list.get(j) < list.get(min_idx))
-                    min_idx = j;
+                if (list.get(j) < list.get(minIndex))
+                    minIndex = j;
             }
 
             // Swap the found minimum element with the first element
-            int temp = list.get(min_idx);
-            list.set(min_idx, list.get(i));
+            int temp = list.get(minIndex);
+            list.set(minIndex, list.get(i));
             list.set(i, temp);
         }
     }

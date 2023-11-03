@@ -7,7 +7,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.logging.Logger;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * This class is used to test the SortingAlgorithm class.
@@ -22,9 +22,15 @@ class SortingAlgorithmTest {
     @Test
     void generateRandomListShouldGenerateCorrectSizeList() {
         logger.info("Checking list generation correctness...");
-        List<Integer> list = SortingAlgorithm.generateRandomList(10);
-        assert (list.size() == 10);
-        assert (SortingAlgorithm.generateRandomList(0).isEmpty());
+        int size = 10;
+        List<Integer> list = SortingAlgorithm.generateRandomList(size);
+
+        assertEquals(size, list.size(), "The size of the list is not correct.");
+
+        long distinctSize = list.stream().distinct().count();
+        assertEquals(size, distinctSize, "All numbers in the list are not distinct.");
+
+        assertTrue(SortingAlgorithm.generateRandomList(0).isEmpty(), "List of size 0 isn't empty.");
     }
 
     /**
