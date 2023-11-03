@@ -105,7 +105,7 @@ public class JavaSortsMain {
         for (String name : algorithmNames) {
             Future<?> future = executor.submit(() -> {
                 List<Integer> listCopy = new ArrayList<>(list); // separate copy for each sort
-                sortAndLog(listCopy, name, sortingAlgorithmFactory, TIMEOUT, UNIT);
+                sortAndLog(listCopy, name, sortingAlgorithmFactory);
             });
 
             futures.add(future);
@@ -131,10 +131,8 @@ public class JavaSortsMain {
      * @param list                    the list to be sorted
      * @param name                    the name of the sorting algorithm
      * @param sortingAlgorithmFactory the factory object that provides instances of sorting algorithms
-     * @param timeout                 the maximum time to wait for the sorting task to complete
-     * @param unit                    the time unit for the timeout value
      */
-    private static void sortAndLog(List<Integer> list, String name, SortingAlgorithmFactory sortingAlgorithmFactory, long timeout, TimeUnit unit) {
+    private static void sortAndLog(List<Integer> list, String name, SortingAlgorithmFactory sortingAlgorithmFactory) {
         StringBuilder outputSb = new StringBuilder();
         SortingAlgorithm algorithm = sortingAlgorithmFactory.getSortingAlgorithm(name);
 
@@ -142,7 +140,7 @@ public class JavaSortsMain {
         Future<?> future = executor.submit(() -> algorithm.displayAndTime(list, name, outputSb));
 
         try {
-            future.get(timeout, unit);
+            future.get(JavaSortsMain.TIMEOUT, JavaSortsMain.UNIT);
         } catch (InterruptedException | ExecutionException e) {
             LOGGER.log(Level.SEVERE, "The execution of the " + name + " algorithm was interrupted or failed.", e);
         } catch (TimeoutException e) {
