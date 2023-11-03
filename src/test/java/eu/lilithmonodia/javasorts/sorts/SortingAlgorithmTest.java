@@ -24,6 +24,7 @@ class SortingAlgorithmTest {
         logger.info("Checking list generation correctness...");
         List<Integer> list = SortingAlgorithm.generateRandomList(10);
         assert (list.size() == 10);
+        assert (SortingAlgorithm.generateRandomList(0).isEmpty());
     }
 
     /**

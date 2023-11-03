@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 /**
  * This class contains test cases for sorting algorithms.
  */
-public class SortingAlgorithmsTest {
+class SortingAlgorithmsTest {
     private static final Logger logger = Logger.getLogger(SortingAlgorithmsTest.class.getName());
 
     private static final List<String> ALGORITHMS = Arrays.asList("QuickSort", "MergeSort", "HeapSort", "PancakeSort",
@@ -39,7 +39,7 @@ public class SortingAlgorithmsTest {
      * Note that a copy of the list is created before sorting, as each sorting algorithm modifies the list.
      */
     @Test
-    public void testSort() {
+    void testSort() {
         logger.info("Running sorting test...");
         List<Integer> list = Arrays.asList(5, 3, 1, 4, 2);
         for (String algorithm : ALGORITHMS) {
@@ -57,7 +57,7 @@ public class SortingAlgorithmsTest {
      * Note that a copy of the list is created before sorting, as each sorting algorithm modifies the list.
      */
     @Test
-    public void testSortOnEmptyList() {
+    void testSortOnEmptyList() {
         logger.info("Running sorting test on an empty list...");
         List<Integer> list = Arrays.asList();
         for (String algorithm : ALGORITHMS) {
@@ -75,7 +75,7 @@ public class SortingAlgorithmsTest {
      * Note that a copy of the list is created before sorting, as each sorting algorithm modifies the list.
      */
     @Test
-    public void testSortOnSingleItemList() {
+    void testSortOnSingleItemList() {
         logger.info("Running sorting test on a single item list...");
         List<Integer> list = Arrays.asList(3);
         for (String algorithm : ALGORITHMS) {

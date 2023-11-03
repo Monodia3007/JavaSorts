@@ -7,6 +7,8 @@ import java.text.DecimalFormat;
  */
 public class TimeUtils {
 
+    private TimeUtils() {}
+
     /**
      * Formats the given duration in nanoseconds into a human-readable string representation.
      *

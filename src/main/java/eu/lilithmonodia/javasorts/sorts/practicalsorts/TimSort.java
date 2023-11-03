@@ -21,7 +21,8 @@ public class TimSort extends SortingAlgorithm {
     }
 
     public void merge(List<Integer> list, int l, int m, int r) {
-        int len1 = m - l + 1, len2 = r - m;
+        int len1 = m - l + 1;
+        int len2 = r - m;
         int[] left = new int[len1];
         int[] right = new int[len2];
         for (int x = 0; x < len1; x++) {

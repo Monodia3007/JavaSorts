@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 /**
  * The TimeUtilsTest class is responsible for testing the TimeUtils class.
  */
-public class TimeUtilsTest {
+class TimeUtilsTest {
     private static final Logger logger = Logger.getLogger(TimeUtilsTest.class.getName());
 
     /**
@@ -19,7 +19,7 @@ public class TimeUtilsTest {
      * formatted string is correct.
      */
     @Test
-    public void testFormatNanos() {
+    void testFormatNanos() {
         logger.info("Running test for formatNanos method...");
         assertEquals("500.00 ns", TimeUtils.formatNanos(500));
         assertEquals("1.00 us", TimeUtils.formatNanos(1_000));

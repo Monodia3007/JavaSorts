@@ -52,7 +52,9 @@ public class MergeSort extends SortingAlgorithm {
         List<Integer> left = new ArrayList<>(list.subList(low, low + n1));
         List<Integer> right = new ArrayList<>(list.subList(mid + 1, mid + 1 + n2));
 
-        int i = 0, j = 0, k = low;
+        int i = 0;
+        int j = 0;
+        int k = low;
         while (i < n1 && j < n2) {
             if (left.get(i) <= right.get(j)) {
                 list.set(k++, left.get(i++));
