@@ -20,7 +20,7 @@ public class SortingAlgorithmsTest {
 
     private static final List<String> ALGORITHMS = Arrays.asList("QuickSort", "MergeSort", "HeapSort", "PancakeSort",
             "BogoSort", "SlowSort", "BubbleSort", "SelectionSort", "InsertionSort", "BozoSort", "StoogeSort",
-            "ShellSort", "RadixSort");
+            "ShellSort", "RadixSort", "TimSort");
 
     private SortingAlgorithmFactory factory;
 
