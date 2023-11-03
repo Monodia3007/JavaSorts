@@ -170,7 +170,7 @@ public class JavaSortsMain {
     private static String extractTimeFromOutput(String output) {
         Pattern pattern = Pattern.compile("took (.*)");
         Matcher matcher = pattern.matcher(output);
-        return (matcher.find()) ? matcher.group(1) : "Time not available";
+        return matcher.find() ? matcher.group(1) : "Time not available";
     }
 
     /**
@@ -190,7 +190,7 @@ public class JavaSortsMain {
             } catch (InterruptedException | ExecutionException e) {
                 LOGGER.log(Level.SEVERE, "Task execution was interrupted or failed.", e);
             } catch (TimeoutException e) {
-                LOGGER.log(Level.SEVERE, "Task execution exceeded the time limit.");
+                LOGGER.log(Level.SEVERE, "Task execution exceeded the time limit.", e);
             }
         }
     }
