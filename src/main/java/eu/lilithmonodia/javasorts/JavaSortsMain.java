@@ -105,7 +105,7 @@ public class JavaSortsMain {
         for (String name : algorithmNames) {
             Future<?> future = executor.submit(() -> {
                 List<Integer> listCopy = new ArrayList<>(list); // separate copy for each sort
-                sortAndLog(listCopy, name, sortingAlgorithmFactory);
+                sortAndLog(listCopy, name, sortingAlgorithmFactory, TIMEOUT, UNIT);
             });
 
             futures.add(future);
@@ -117,17 +117,39 @@ public class JavaSortsMain {
     }
 
     /**
-     * This method performs sorting on a given list using a specified sorting algorithm.
-     * It logs the sorted list along with the algorithm name and duration to the database and prints a log message.
+     * This method performs sorting on a given list using a specified algorithm and logs the sorted list along with the algorithm name.
+     * It first creates a StringBuilder object to store the output of the sorting algorithm.
+     * It then retrieves the sorting algorithm instance from the provided SortingAlgorithmFactory using the algorithm name.
+     * Next, it creates a single-threaded ExecutorService to run the sorting task.
+     * The sorting task is submitted to the ExecutorService, which runs it asynchronously.
+     * The execution of the sorting task is limited by a timeout value and time unit.
+     * If the sorting task completes successfully within the specified timeout, the result is retrieved from the Future object.
+     * If the sorting task is interrupted or encounters an exception during execution, an appropriate logging statement is generated.
+     * Finally, the ExecutorService is shut down and the sorted list is logged to a database using the DB_LOGGER object.
+     * A logging statement is also generated to inform the completion of the sorting task along with the sorting algorithm name and execution time.
      *
      * @param list                    the list to be sorted
-     * @param name                    the name of the sorting algorithm to be used
-     * @param sortingAlgorithmFactory a factory object that provides instances of sorting algorithms
+     * @param name                    the name of the sorting algorithm
+     * @param sortingAlgorithmFactory the factory object that provides instances of sorting algorithms
+     * @param timeout                 the maximum time to wait for the sorting task to complete
+     * @param unit                    the time unit for the timeout value
      */
-    private static void sortAndLog(List<Integer> list, String name, SortingAlgorithmFactory sortingAlgorithmFactory) {
+    private static void sortAndLog(List<Integer> list, String name, SortingAlgorithmFactory sortingAlgorithmFactory, long timeout, TimeUnit unit) {
         StringBuilder outputSb = new StringBuilder();
         SortingAlgorithm algorithm = sortingAlgorithmFactory.getSortingAlgorithm(name);
-        algorithm.displayAndTime(list, name, outputSb);
+
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+        Future<?> future = executor.submit(() -> algorithm.displayAndTime(list, name, outputSb));
+
+        try {
+            future.get(timeout, unit);
+        } catch (InterruptedException | ExecutionException e) {
+            LOGGER.log(Level.SEVERE, "The execution of the " + name + " algorithm was interrupted or failed.", e);
+        } catch (TimeoutException e) {
+            LOGGER.log(Level.SEVERE, "The execution of the " + name + " algorithm exceeded the time limit.");
+        } finally {
+            executor.shutdown();
+        }
 
         String formattedDuration = extractTimeFromOutput(outputSb.toString());
         DB_LOGGER.addLog(formattedDuration, list.size(), name);  // Log to database
