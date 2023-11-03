@@ -168,7 +168,7 @@ public class JavaSortsMain {
      * @return the extracted duration, or "Time not available" if no duration is found in the output string
      */
     private static String extractTimeFromOutput(String output) {
-        Pattern pattern = Pattern.compile("took (.*?)\\.?");
+        Pattern pattern = Pattern.compile("took ([^\\.]*)\\.?");
         Matcher matcher = pattern.matcher(output);
         return (matcher.find()) ? matcher.group(1) : "Time not available";
     }
