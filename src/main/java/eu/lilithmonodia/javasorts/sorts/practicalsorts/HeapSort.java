@@ -7,18 +7,13 @@ import java.util.List;
 
 /**
  * Implementation of the Heap Sort algorithm.
- *
  * <p>
  * This class provides an implementation of the Heap Sort algorithm to sort a list of integers.
  * It extends the SortingAlgorithm class and overrides the sort() method.
- * </p>
- *
  * <p>
  * The Heap Sort algorithm works by building a binary heap from the input list and repeatedly extracting the maximum element from the heap,
  * which is then placed at the end of the sorted portion of the list.
  * The process is repeated until the entire list is sorted in ascending order.
- * </p>
- *
  * <p>
  * Example usage:
  * <pre>{@code
@@ -27,7 +22,6 @@ import java.util.List;
  * heapSort.sort(list);
  * System.out.println(list); // Output: [1, 2, 5, 6, 8, 9]
  * }</pre>
- * </p>
  */
 public class HeapSort extends SortingAlgorithm {
 

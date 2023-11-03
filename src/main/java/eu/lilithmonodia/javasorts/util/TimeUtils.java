@@ -2,6 +2,9 @@ package eu.lilithmonodia.javasorts.util;
 
 import java.util.concurrent.TimeUnit;
 
+/**
+ * Utility class for formatting durations in nanoseconds into human-readable string representation.
+ */
 public class TimeUtils {
 
     /**

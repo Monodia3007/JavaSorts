@@ -39,6 +39,7 @@ public abstract class SortingAlgorithm {
      *
      * @param list          the list to be sorted
      * @param algorithmName the name of the sorting algorithm
+     * @param outputSb      the StringBuilder to append the output to, use null for printing to console
      */
     public void displayAndTime(List<Integer> list, String algorithmName, StringBuilder outputSb) {
         String original = "Original List for " + algorithmName + " (first 10 elements): " + list.subList(0, Math.min(list.size(), 10)) + "... ";
