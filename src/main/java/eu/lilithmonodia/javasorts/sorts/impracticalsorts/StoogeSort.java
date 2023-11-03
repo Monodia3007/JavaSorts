@@ -7,7 +7,8 @@ import java.util.List;
 /**
  * Implements the StoogeSort algorithm for sorting a list of integers in non-decreasing order.
  * <p>
- * This class extends the SortingAlgorithm abstract class and overrides the sort() method to implement the StoogeSort algorithm.
+ * This class extends the SortingAlgorithm abstract class and overrides the sort() method to implement the StoogeSort
+ * algorithm.
  */
 public class StoogeSort extends SortingAlgorithm {
     /**
@@ -21,8 +22,7 @@ public class StoogeSort extends SortingAlgorithm {
     }
 
     /**
-     * Sorts a list of integers in ascending order using the Stooge Sort algorithm
-     * within the given range [l, h].
+     * Sorts a list of integers in ascending order using the Stooge Sort algorithm within the given range [l, h].
      *
      * @param list the list of integers to be sorted
      * @param l    the starting index of the range to be sorted (inclusive)

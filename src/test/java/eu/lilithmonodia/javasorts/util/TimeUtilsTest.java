@@ -14,9 +14,8 @@ class TimeUtilsTest {
     private static final Logger logger = Logger.getLogger(TimeUtilsTest.class.getName());
 
     /**
-     * This method is used to test the formatNanos method of the TimeUtils class.
-     * It tests the formatNanos method for various values and asserts that the
-     * formatted string is correct.
+     * This method is used to test the formatNanos method of the TimeUtils class. It tests the formatNanos method for
+     * various values and asserts that the formatted string is correct.
      */
     @Test
     void testFormatNanos() {

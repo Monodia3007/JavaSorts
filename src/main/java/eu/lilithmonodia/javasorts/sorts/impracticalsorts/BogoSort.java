@@ -6,17 +6,16 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * BogoSort is a class that extends the SortingAlgorithm class and implements the Bogo Sort algorithm.
- * Bogo Sort is a highly inefficient sorting algorithm that works by randomly shuffling the elements
- * until the list is sorted.
- *
- * <p>The BogoSort class provides a method sort() that takes a List of Integers as input and sorts the
- * list in ascending order using the Bogo Sort algorithm.</p>
- *
- * <p>The class also provides a private helper method isSorted() that checks if the given list is sorted
- * in ascending order.</p>
- *
- * <p>This class inherits the abstract method sort() from the SortingAlgorithm class.</p>
+ * BogoSort is a class that extends the SortingAlgorithm class and implements the Bogo Sort algorithm. Bogo Sort is a
+ * highly inefficient sorting algorithm that works by randomly shuffling the elements until the list is sorted.
+ * <p>
+ * The BogoSort class provides a method sort() that takes a List of Integers as input and sorts the
+ * list in ascending order using the Bogo Sort algorithm.
+ * <p>
+ * The class also provides a private helper method isSorted() that checks if the given list is sorted
+ * in ascending order.
+ * <p>
+ * This class inherits the abstract method sort() from the SortingAlgorithm class.
  *
  * @see SortingAlgorithm
  */

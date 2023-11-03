@@ -7,17 +7,16 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * The PancakeSort class implements the pancake sort algorithm, which sorts a list of integers
- * in ascending order.
+ * The PancakeSort class implements the pancake sort algorithm, which sorts a list of integers in ascending order.
  */
 public class PancakeSort extends SortingAlgorithm {
 
     /**
      * Sorts a List of Integers in descending order using the Pancake Sort algorithm.
      * <p>
-     * The Pancake Sort algorithm works by finding the maximum element in the list and flipping it to the beginning of the list,
-     * then flipping the entire list so that the maximum element is at the end. This process is repeated for each element
-     * in the list, resulting in a sorted list in descending order.
+     * The Pancake Sort algorithm works by finding the maximum element in the list and flipping it to the beginning of
+     * the list, then flipping the entire list so that the maximum element is at the end. This process is repeated for
+     * each element in the list, resulting in a sorted list in descending order.
      *
      * @param list the List of Integers to be sorted
      */

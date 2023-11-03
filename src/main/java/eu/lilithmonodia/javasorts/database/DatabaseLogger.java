@@ -1,6 +1,7 @@
 package eu.lilithmonodia.javasorts.database;
 
 import eu.lilithmonodia.javasorts.configuration.Configuration;
+
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -9,8 +10,7 @@ import java.sql.SQLException;
 import java.util.logging.Logger;
 
 /**
- * The DatabaseLogger class is responsible for connecting to a PostgreSQL database
- * and adding log entries to it.
+ * The DatabaseLogger class is responsible for connecting to a PostgreSQL database and adding log entries to it.
  */
 public class DatabaseLogger {
 

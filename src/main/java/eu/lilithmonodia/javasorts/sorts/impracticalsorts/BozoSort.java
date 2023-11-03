@@ -7,8 +7,7 @@ import java.util.List;
 import java.util.Random;
 
 /**
- * This class implements the BozoSort algorithm for sorting a list of integers.
- * It extends the SortingAlgorithm class.
+ * This class implements the BozoSort algorithm for sorting a list of integers. It extends the SortingAlgorithm class.
  */
 public class BozoSort extends SortingAlgorithm {
     private static final Random RANDOM = new Random();

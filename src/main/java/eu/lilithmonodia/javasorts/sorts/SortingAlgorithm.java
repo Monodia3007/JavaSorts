@@ -21,6 +21,7 @@ public abstract class SortingAlgorithm {
      * Generates a list of random integers.
      *
      * @param size the size of the list to generate
+     *
      * @return a list of random integers of the specified size
      */
     public static List<Integer> generateRandomList(int size) {
@@ -41,9 +42,9 @@ public abstract class SortingAlgorithm {
     /**
      * Displays the original list, sorts it using the specified algorithm, and measures the time taken.
      *
-     * @param list The list to be sorted.
+     * @param list          The list to be sorted.
      * @param algorithmName The name of the sorting algorithm being used.
-     * @param outputSb The optional StringBuilder to which the output will be appended.
+     * @param outputSb      The optional StringBuilder to which the output will be appended.
      */
     public void displayAndTime(List<Integer> list, String algorithmName, StringBuilder outputSb) {
         String original = "Original List for " + algorithmName + " (first 10 elements): " + list.subList(0, Math.min(list.size(), 10)) + "... ";

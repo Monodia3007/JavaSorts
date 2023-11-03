@@ -33,10 +33,10 @@ class SortingAlgorithmsTest {
     }
 
     /**
-     * This method is used to test the sorting algorithm implemented by the SortingAlgorithmFactory.
-     * It tests the sorting algorithm for each algorithm available in the ALGORITHMS list, using a sample list of integers.
-     * The method compares the sorted copy of the list with the expected sorted result and asserts that they are equal.
-     * Note that a copy of the list is created before sorting, as each sorting algorithm modifies the list.
+     * This method is used to test the sorting algorithm implemented by the SortingAlgorithmFactory. It tests the
+     * sorting algorithm for each algorithm available in the ALGORITHMS list, using a sample list of integers. The
+     * method compares the sorted copy of the list with the expected sorted result and asserts that they are equal. Note
+     * that a copy of the list is created before sorting, as each sorting algorithm modifies the list.
      */
     @Test
     void testSort() {
@@ -51,15 +51,15 @@ class SortingAlgorithmsTest {
     }
 
     /**
-     * This method is used to test the sorting algorithm implemented by the SortingAlgorithmFactory on an empty list.
-     * It tests the sorting algorithm for each algorithm available in the ALGORITHMS list, using an empty list.
-     * The method asserts that the sorted copy of the empty list is also empty.
-     * Note that a copy of the list is created before sorting, as each sorting algorithm modifies the list.
+     * This method is used to test the sorting algorithm implemented by the SortingAlgorithmFactory on an empty list. It
+     * tests the sorting algorithm for each algorithm available in the ALGORITHMS list, using an empty list. The method
+     * asserts that the sorted copy of the empty list is also empty. Note that a copy of the list is created before
+     * sorting, as each sorting algorithm modifies the list.
      */
     @Test
     void testSortOnEmptyList() {
         logger.info("Running sorting test on an empty list...");
-        List<Integer> list = Arrays.asList();
+        List<Integer> list = List.of();
         for (String algorithm : ALGORITHMS) {
             SortingAlgorithm sorter = factory.getSortingAlgorithm(algorithm);
             List<Integer> copy = new ArrayList<>(list); // Creating a copy of list as each sorter modifies the list.
@@ -69,15 +69,16 @@ class SortingAlgorithmsTest {
     }
 
     /**
-     * This method is used to test the sorting algorithm implemented by the SortingAlgorithmFactory on a list with a single item.
-     * It tests the sorting algorithm for each algorithm available in the ALGORITHMS list, using a list with a single item.
-     * The method asserts that the sorted copy of the list contains only the single item in the correct order.
-     * Note that a copy of the list is created before sorting, as each sorting algorithm modifies the list.
+     * This method is used to test the sorting algorithm implemented by the SortingAlgorithmFactory on a list with a
+     * single item. It tests the sorting algorithm for each algorithm available in the ALGORITHMS list, using a list
+     * with a single item. The method asserts that the sorted copy of the list contains only the single item in the
+     * correct order. Note that a copy of the list is created before sorting, as each sorting algorithm modifies the
+     * list.
      */
     @Test
     void testSortOnSingleItemList() {
         logger.info("Running sorting test on a single item list...");
-        List<Integer> list = Arrays.asList(3);
+        List<Integer> list = List.of(3);
         for (String algorithm : ALGORITHMS) {
             SortingAlgorithm sorter = factory.getSortingAlgorithm(algorithm);
             List<Integer> copy = new ArrayList<>(list); // Creating a copy of list as each sorter modifies the list.

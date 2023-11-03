@@ -17,19 +17,17 @@ import static java.lang.System.exit;
 
 public class JavaSortsMain {
     private static final Logger LOGGER = Logger.getLogger(JavaSortsMain.class.getName());
-    private static final long TIMEOUT = 120;  // consider to adjust this value
+    private static final long TIMEOUT = 120;
     private static final TimeUnit UNIT = TimeUnit.SECONDS;
     private static final DatabaseLogger DB_LOGGER = new DatabaseLogger();
 
     /**
-     * The main method of the program.
-     * This method is responsible for executing the sorting tasks using different sorting algorithms.
-     * It prompts the user for the length of the list, generates a random list of that length,
-     * and performs the sorting tasks using the sorting algorithm factory.
-     * It continues to prompt the user for the length of the list until the user enters -1, at which point the program terminates.
+     * The main method of the program. This method is responsible for executing the sorting tasks using different
+     * sorting algorithms. It prompts the user for the length of the list, generates a random list of that length, and
+     * performs the sorting tasks using the sorting algorithm factory. It continues to prompt the user for the length of
+     * the list until the user enters -1, at which point the program terminates.
      *
      * @param args the command-line arguments
-
      */
     public static void main(String[] args) {
         SortingAlgorithmFactory sortingAlgorithmFactory = new SortingAlgorithmFactory();
@@ -105,9 +103,9 @@ public class JavaSortsMain {
     /**
      * Sorts the given list using the specified sorting algorithm and logs the duration of the sorting process.
      *
-     * @param list                     the list of integers to be sorted
-     * @param name                     the name of the sorting algorithm to be used
-     * @param sortingAlgorithmFactory  the factory object used to create the sorting algorithm
+     * @param list                    the list of integers to be sorted
+     * @param name                    the name of the sorting algorithm to be used
+     * @param sortingAlgorithmFactory the factory object used to create the sorting algorithm
      */
     private static void sortAndLog(List<Integer> list, String name, SortingAlgorithmFactory sortingAlgorithmFactory) {
         StringBuilder outputSb = new StringBuilder();
@@ -119,7 +117,7 @@ public class JavaSortsMain {
         try {
             future.get(JavaSortsMain.TIMEOUT, JavaSortsMain.UNIT);
         } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();  // Preserve interrupt status
+            Thread.currentThread().interrupt();
             LOGGER.log(Level.SEVERE, "The execution of the {0} algorithm was interrupted or failed.", new Object[]{name});
         } catch (ExecutionException e) {
             LOGGER.log(Level.SEVERE, "The execution of the {0} algorithm was interrupted or failed.", new Object[]{name});
@@ -142,6 +140,7 @@ public class JavaSortsMain {
      * Extracts the time information from the given output string.
      *
      * @param output the output string from which to extract the time information
+     *
      * @return the extracted time information if found, or "Time not available" if not found
      */
     private static String extractTimeFromOutput(String output) {
@@ -160,7 +159,7 @@ public class JavaSortsMain {
             try {
                 future.get(TIMEOUT, UNIT);
             } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();  // Preserve interrupt status
+                Thread.currentThread().interrupt();
                 LOGGER.log(Level.SEVERE, "Task execution was interrupted or failed.", e);
             } catch (ExecutionException e) {
                 LOGGER.log(Level.SEVERE, "Task execution was interrupted or failed.", e);

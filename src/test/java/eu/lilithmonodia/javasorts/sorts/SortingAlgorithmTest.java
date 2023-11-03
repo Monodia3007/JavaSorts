@@ -45,9 +45,9 @@ class SortingAlgorithmTest {
     }
 
     /**
-     * Test method to validate that displayAndTime method modifies the given list.
-     * It calls the displayAndTime method of the sortingAlgorithm with the list, algorithm name, and a StringBuilder.
-     * It then asserts that the modified list is sorted in ascending order.
+     * Test method to validate that displayAndTime method modifies the given list. It calls the displayAndTime method of
+     * the sortingAlgorithm with the list, algorithm name, and a StringBuilder. It then asserts that the modified list
+     * is sorted in ascending order.
      */
     @Test
     void displayAndTimeShouldModifyList() {
@@ -59,7 +59,8 @@ class SortingAlgorithmTest {
     }
 
     /**
-     * A dummy sorting algorithm implementation that sorts a list of integers using the {@link Collections#sort(List)} method.
+     * A dummy sorting algorithm implementation that sorts a list of integers using the {@link Collections#sort(List)}
+     * method.
      *
      * <p>This class extends the {@link SortingAlgorithm} abstract class.</p>
      *

@@ -12,12 +12,10 @@ import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 
 /**
- * The `Configuration` record holds the necessary details required to
- * establish a database connection. This includes the host address,
- * the database username, and password.
+ * The `Configuration` record holds the necessary details required to establish a database connection. This includes the
+ * host address, the database username, and password.
  * <p>
- * This record provides a method to read these details from a JSON
- * configuration file named config.json.
+ * This record provides a method to read these details from a JSON configuration file named config.json.
  */
 public record Configuration(String databaseHost, String databaseUser, String userPassword) {
     /**

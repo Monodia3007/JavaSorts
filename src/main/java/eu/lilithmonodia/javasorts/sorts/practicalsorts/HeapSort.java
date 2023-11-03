@@ -8,12 +8,12 @@ import java.util.List;
 /**
  * Implementation of the Heap Sort algorithm.
  * <p>
- * This class provides an implementation of the Heap Sort algorithm to sort a list of integers.
- * It extends the SortingAlgorithm class and overrides the sort() method.
+ * This class provides an implementation of the Heap Sort algorithm to sort a list of integers. It extends the
+ * SortingAlgorithm class and overrides the sort() method.
  * <p>
- * The Heap Sort algorithm works by building a binary heap from the input list and repeatedly extracting the maximum element from the heap,
- * which is then placed at the end of the sorted portion of the list.
- * The process is repeated until the entire list is sorted in ascending order.
+ * The Heap Sort algorithm works by building a binary heap from the input list and repeatedly extracting the maximum
+ * element from the heap, which is then placed at the end of the sorted portion of the list. The process is repeated
+ * until the entire list is sorted in ascending order.
  * <p>
  * Example usage:
  * <pre>{@code
@@ -45,8 +45,8 @@ public class HeapSort extends SortingAlgorithm {
     }
 
     /**
-     * Heapify is a helper method used in the heap sort algorithm to maintain the heap property
-     * of a binary tree rooted at a specified index i in the given list of integers.
+     * Heapify is a helper method used in the heap sort algorithm to maintain the heap property of a binary tree rooted
+     * at a specified index i in the given list of integers.
      *
      * @param list the list of integers
      * @param n    the size of the heap

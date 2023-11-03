@@ -5,8 +5,8 @@ import eu.lilithmonodia.javasorts.sorts.SortingAlgorithm;
 import java.util.List;
 
 /**
- * ShellSort is a class that implements the Shell Sort algorithm to sort a given List of Integers.
- * It extends the SortingAlgorithm class.
+ * ShellSort is a class that implements the Shell Sort algorithm to sort a given List of Integers. It extends the
+ * SortingAlgorithm class.
  */
 public class ShellSort extends SortingAlgorithm {
     /**

@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * MergeSort class is a concrete implementation of the SortingAlgorithm abstract class.
- * It uses the merge sort algorithm to sort a given list of integers in ascending order.
+ * MergeSort class is a concrete implementation of the SortingAlgorithm abstract class. It uses the merge sort algorithm
+ * to sort a given list of integers in ascending order.
  */
 public class MergeSort extends SortingAlgorithm {
 

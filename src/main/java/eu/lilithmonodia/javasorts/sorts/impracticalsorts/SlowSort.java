@@ -8,9 +8,9 @@ import java.util.List;
 /**
  * This class implements the SlowSort algorithm for sorting a list of integers.
  * <p>
- * SlowSort is a recursive sorting algorithm that divides the list into two halves, sorts each half recursively,
- * and then swaps the middle element with the last element if the middle element is greater than the last element.
- * Finally, it recursively sorts the list again from the beginning to the second-to-last element.
+ * SlowSort is a recursive sorting algorithm that divides the list into two halves, sorts each half recursively, and
+ * then swaps the middle element with the last element if the middle element is greater than the last element. Finally,
+ * it recursively sorts the list again from the beginning to the second-to-last element.
  *
  * @see SortingAlgorithm
  */
@@ -27,8 +27,8 @@ public class SlowSort extends SortingAlgorithm {
     }
 
     /**
-     * Recursive helper method for slow sort algorithm.
-     * Sorts the sublist between the specified left and right indices in ascending order.
+     * Recursive helper method for slow sort algorithm. Sorts the sublist between the specified left and right indices
+     * in ascending order.
      *
      * @param list  the list of integers to be sorted
      * @param left  the left index of the sublist

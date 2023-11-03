@@ -5,8 +5,8 @@ import eu.lilithmonodia.javasorts.sorts.SortingAlgorithm;
 import java.util.List;
 
 /**
- * BubbleSort is a class that extends the SortingAlgorithm class and provides
- * the implementation for the sort method using the bubble sort algorithm.
+ * BubbleSort is a class that extends the SortingAlgorithm class and provides the implementation for the sort method
+ * using the bubble sort algorithm.
  */
 public class BubbleSort extends SortingAlgorithm {
     /**

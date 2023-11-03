@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Radix Sort is an algorithm for sorting integers by their digits, from the least significant digit to the most significant digit.
- * It is a non-comparative sorting algorithm and has a time complexity of O(nk), where n is the number of elements in the input list and
- * k is the number of digits in the maximum element.
+ * Radix Sort is an algorithm for sorting integers by their digits, from the least significant digit to the most
+ * significant digit. It is a non-comparative sorting algorithm and has a time complexity of O(nk), where n is the
+ * number of elements in the input list and k is the number of digits in the maximum element.
  * <p>
  * This class extends the SortingAlgorithm class and overrides the sort method to implement the Radix Sort algorithm.
  */
@@ -34,8 +34,8 @@ public class RadixSort extends SortingAlgorithm {
     }
 
     /**
-     * Sorts the given list of integers using the Counting Sort algorithm.
-     * The list will be sorted in non-decreasing order.
+     * Sorts the given list of integers using the Counting Sort algorithm. The list will be sorted in non-decreasing
+     * order.
      *
      * @param list the list of integers to sort
      * @param exp  the exponent value used for sorting (usually powers of 10)

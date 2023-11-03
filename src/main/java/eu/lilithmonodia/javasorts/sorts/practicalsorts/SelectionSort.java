@@ -5,13 +5,13 @@ import eu.lilithmonodia.javasorts.sorts.SortingAlgorithm;
 import java.util.List;
 
 /**
- * The SelectionSort class implements the SelectionSort algorithm to sort a list of integers in ascending order.
- * The original list is modified in place.
+ * The SelectionSort class implements the SelectionSort algorithm to sort a list of integers in ascending order. The
+ * original list is modified in place.
  */
 public class SelectionSort extends SortingAlgorithm {
     /**
-     * Sorts a given list of integers in ascending order using the selection sort algorithm.
-     * The original list is modified in place.
+     * Sorts a given list of integers in ascending order using the selection sort algorithm. The original list is
+     * modified in place.
      *
      * @param list the list of integers to be sorted
      */
