@@ -21,6 +21,9 @@ public class RadixSort extends SortingAlgorithm {
      * @return the maximum value in the list
      */
     private static int findMax(List<Integer> list) {
+        if (list.isEmpty()) {
+            return -1; // Indicates list is empty. This value won't affect the actual algorithm.
+        }
         int max = list.get(0);
         for (Integer integer : list) {
             if (integer > max) {
@@ -71,6 +74,10 @@ public class RadixSort extends SortingAlgorithm {
     @Override
     public void sort(List<Integer> list) {
         int maxValue = findMax(list);
+
+        if (maxValue == -1) {
+            return;  // List is empty, no need to sort.
+        }
 
         for (int exp = 1; maxValue / exp > 0; exp *= 10) {
             countSort(list, exp);
