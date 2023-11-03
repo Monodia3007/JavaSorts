@@ -13,10 +13,10 @@ public class TimSort extends SortingAlgorithm {
             int temp = list.get(i);
             int j = i - 1;
             while (j >= left && list.get(j) > temp) {
-                list.set(j+1, list.get(j));
+                list.set(j + 1, list.get(j));
                 j--;
             }
-            list.set(j+1, temp);
+            list.set(j + 1, temp);
         }
     }
 

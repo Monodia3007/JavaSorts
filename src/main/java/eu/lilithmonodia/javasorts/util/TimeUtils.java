@@ -1,7 +1,6 @@
 package eu.lilithmonodia.javasorts.util;
 
 import java.text.DecimalFormat;
-import java.util.concurrent.TimeUnit;
 
 /**
  * A utility class for formatting durations in nanoseconds into a human-readable string representation.
@@ -24,7 +23,7 @@ public class TimeUtils {
             scaledNanos /= 86_400_000_000_000L;
             return df.format(scaledNanos) + " d";
         } else if (scaledNanos >= 3_600_000_000_000L) {
-            scaledNanos /=  3_600_000_000_000L;
+            scaledNanos /= 3_600_000_000_000L;
             return df.format(scaledNanos) + " h";
         } else if (scaledNanos >= 60_000_000_000L) {
             scaledNanos /= 60_000_000_000L;

@@ -1,10 +1,7 @@
 package eu.lilithmonodia.javasorts;
 
 import eu.lilithmonodia.javasorts.sorts.SortingAlgorithm;
-import eu.lilithmonodia.javasorts.sorts.impracticalsorts.PancakeSort;
-import eu.lilithmonodia.javasorts.sorts.practicalsorts.HeapSort;
-import eu.lilithmonodia.javasorts.sorts.practicalsorts.MergeSort;
-import eu.lilithmonodia.javasorts.sorts.practicalsorts.QuickSort;
+import eu.lilithmonodia.javasorts.sorts.practicalsorts.*;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
@@ -27,10 +24,14 @@ public class JavaFXSortsMain extends Application {
 
     private final ExecutorService executorService = Executors.newFixedThreadPool(2);
     private final List<SortingAlgorithm> sortingAlgorithms = Arrays.asList(
-            new PancakeSort(),
             new QuickSort(),
             new MergeSort(),
-            new HeapSort()
+            new HeapSort(),
+            new InsertionSort(),
+            new ShellSort(),
+            new SelectionSort(),
+            new TimSort(),
+            new RadixSort()
     );
 
     /**
