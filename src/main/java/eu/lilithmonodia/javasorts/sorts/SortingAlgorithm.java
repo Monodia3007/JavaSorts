@@ -48,7 +48,7 @@ public abstract class SortingAlgorithm {
         sort(list);
         long endTime = System.nanoTime();
         sorted = "Sorting List using " + algorithmName + " (first 10 elements): " + list.subList(0, Math.min(list.size(), 10)) + "... ";
-        String time = algorithmName + " took " + TimeUtils.formatNanos(endTime - startTime) + ".\n";
+        String time = algorithmName + " took " + TimeUtils.formatNanos(endTime - startTime) + "\n";
         if (outputSb != null) {
             outputSb.append(original).append("\n").append(sorted).append("\n").append(time);
         } else {

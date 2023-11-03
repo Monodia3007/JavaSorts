@@ -18,20 +18,29 @@ public class TimeUtils {
     public static String formatNanos(long nanos) {
         DecimalFormat df = new DecimalFormat("0.00");
 
-        if (nanos >= 86_400_000_000_000L) {
-            return df.format((double) TimeUnit.NANOSECONDS.toDays(nanos)) + " d";
-        } else if (nanos >= 3_600_000_000_000L) {
-            return df.format((double) TimeUnit.NANOSECONDS.toHours(nanos)) + " h";
-        } else if (nanos >= 60_000_000_000L) {
-            return df.format((double) TimeUnit.NANOSECONDS.toMinutes(nanos)) + " min";
-        } else if (nanos >= 1_000_000_000) {
-            return df.format((double) TimeUnit.NANOSECONDS.toSeconds(nanos)) + " s";
-        } else if (nanos >= 1_000_000) {
-            return df.format((double) TimeUnit.NANOSECONDS.toMillis(nanos)) + " ms";
-        } else if (nanos >= 1_000) {
-            return df.format((double) TimeUnit.NANOSECONDS.toMicros(nanos)) + " us";
+        double scaledNanos = nanos;
+
+        if (scaledNanos >= 86_400_000_000_000L) {
+            scaledNanos /= 86_400_000_000_000L;
+            return df.format(scaledNanos) + " d";
+        } else if (scaledNanos >= 3_600_000_000_000L) {
+            scaledNanos /=  3_600_000_000_000L;
+            return df.format(scaledNanos) + " h";
+        } else if (scaledNanos >= 60_000_000_000L) {
+            scaledNanos /= 60_000_000_000L;
+            return df.format(scaledNanos) + " min";
+        } else if (scaledNanos >= 1_000_000_000) {
+            scaledNanos /= 1_000_000_000;
+            return df.format(scaledNanos) + " s";
+        } else if (scaledNanos >= 1_000_000) {
+            scaledNanos /= 1_000_000;
+            return df.format(scaledNanos) + " ms";
+        } else if (scaledNanos >= 1_000) {
+            scaledNanos /= 1_000;
+            return df.format(scaledNanos) + " us";
         } else {
-            return df.format((double) nanos) + " ns";
+            scaledNanos /= 1;
+            return df.format(scaledNanos) + " ns";
         }
     }
 }

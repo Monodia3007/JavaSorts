@@ -161,14 +161,14 @@ public class JavaSortsMain {
 
     /**
      * This method extracts the duration from the output string.
-     * The output string should contain the duration and an optional trailing dot, formatted as "took <duration>.".
+     * The output string should contain the duration formatted as "took <duration>".
      *
      * @param output the output string from which to extract the duration
      *
      * @return the extracted duration, or "Time not available" if no duration is found in the output string
      */
     private static String extractTimeFromOutput(String output) {
-        Pattern pattern = Pattern.compile("took ([^\\.]*)\\.?");
+        Pattern pattern = Pattern.compile("took (.*)");
         Matcher matcher = pattern.matcher(output);
         return (matcher.find()) ? matcher.group(1) : "Time not available";
     }
