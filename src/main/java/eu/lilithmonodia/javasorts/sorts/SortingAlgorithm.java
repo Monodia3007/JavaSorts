@@ -8,7 +8,9 @@ import java.util.Random;
 import java.util.logging.Logger;
 
 /**
- * This is an abstract class that represents a sorting algorithm. It provides methods for generating a list of random integers, sorting a given list, and displaying the original list along with the sorted list and the time taken to sort the list.
+ * This is an abstract class that represents a sorting algorithm. It provides methods for generating a list of random
+ * integers, sorting a given list, and displaying the original list along with the sorted list and the time taken to
+ * sort the list.
  */
 public abstract class SortingAlgorithm {
 
