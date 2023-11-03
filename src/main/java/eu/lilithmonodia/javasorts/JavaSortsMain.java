@@ -152,9 +152,11 @@ public class JavaSortsMain {
         }
 
         String formattedDuration = extractTimeFromOutput(outputSb.toString());
-        DB_LOGGER.addLog(formattedDuration, list.size(), name);  // Log to database
 
-        LOGGER.log(Level.INFO, "Sorting with " + name + " algorithm on list of size " + list.size() + " took " + formattedDuration);
+        if (!"Time not available".equals(formattedDuration)) {
+            LOGGER.log(Level.INFO, "Sorting with " + name + " algorithm on list of size " + list.size() + " took " + formattedDuration);
+            DB_LOGGER.addLog(formattedDuration, list.size(), name);
+        }
     }
 
     /**

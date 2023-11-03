@@ -1,10 +1,8 @@
 package eu.lilithmonodia.javasorts.util;
 
+import java.text.DecimalFormat;
 import java.util.concurrent.TimeUnit;
 
-/**
- * Utility class for formatting durations in nanoseconds into human-readable string representation.
- */
 public class TimeUtils {
 
     /**
@@ -15,20 +13,22 @@ public class TimeUtils {
      * @return the formatted string representation of the duration
      */
     public static String formatNanos(long nanos) {
+        DecimalFormat df = new DecimalFormat("0.00");
+
         if (nanos >= 86_400_000_000_000L) {
-            return String.format("%.2f d", (double) TimeUnit.NANOSECONDS.toDays(nanos));
+            return df.format((double) TimeUnit.NANOSECONDS.toDays(nanos)) + " d";
         } else if (nanos >= 3_600_000_000_000L) {
-            return String.format("%.2f h", (double) TimeUnit.NANOSECONDS.toHours(nanos));
+            return df.format((double) TimeUnit.NANOSECONDS.toHours(nanos)) + " h";
         } else if (nanos >= 60_000_000_000L) {
-            return String.format("%.2f min", (double) TimeUnit.NANOSECONDS.toMinutes(nanos));
+            return df.format((double) TimeUnit.NANOSECONDS.toMinutes(nanos)) + " min";
         } else if (nanos >= 1_000_000_000) {
-            return String.format("%.2f s", (double) TimeUnit.NANOSECONDS.toSeconds(nanos));
+            return df.format((double) TimeUnit.NANOSECONDS.toSeconds(nanos)) + " s";
         } else if (nanos >= 1_000_000) {
-            return String.format("%.2f ms", (double) TimeUnit.NANOSECONDS.toMillis(nanos));
+            return df.format((double) TimeUnit.NANOSECONDS.toMillis(nanos)) + " ms";
         } else if (nanos >= 1_000) {
-            return String.format("%.2f us", (double) TimeUnit.NANOSECONDS.toMicros(nanos));
+            return df.format((double) TimeUnit.NANOSECONDS.toMicros(nanos)) + " us";
         } else {
-            return String.format("%.2f ns", (double) nanos);
+            return df.format((double) nanos) + " ns";
         }
     }
 }
