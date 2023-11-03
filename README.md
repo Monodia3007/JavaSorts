@@ -28,13 +28,22 @@ each algorithm to a database.
 
 The following sorting algorithms are available in this program.
 
-- QuickSort
-- MergeSort
-- HeapSort
-- PancakeSort
-- BogoSort
-- SlowSort
-- BubbleSort
+- Practical Sorting Algorithms:
+  - BubbleSort
+  - HeapSort
+  - InsertionSort
+  - MergeSort
+  - QuickSort
+  - RadixSort
+  - SelectionSort
+  - ShellSort
+  - TimSort
+- Impractical Sorting Algorithms:
+  - BogoSort
+  - BozoSort
+  - PancakeSort
+  - SlowSort
+  - StoogeSort
 
 ### Note
 
