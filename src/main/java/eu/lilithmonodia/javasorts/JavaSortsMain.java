@@ -39,7 +39,7 @@ public class JavaSortsMain {
      */
     public static void main(String[] args) {
         SortingAlgorithmFactory sortingAlgorithmFactory = new SortingAlgorithmFactory();
-        String[] algorithmNames = {"QuickSort", "MergeSort", "HeapSort", "PancakeSort", "BogoSort", "SlowSort", "BubbleSort", "SelectionSort", "InsertionSort", "BozoSort", "StoogeSort", "StalinSort", "ShellSort", "RadixSort"};
+        String[] algorithmNames = {"QuickSort", "MergeSort", "HeapSort", "PancakeSort", "BogoSort", "SlowSort", "BubbleSort", "SelectionSort", "InsertionSort", "BozoSort", "StoogeSort", "StalinSort", "ShellSort", "RadixSort", "LateStageCapitalismSort"};
 
         while (true) {
             int listLength = getListLengthFromUserInput();
@@ -126,7 +126,7 @@ public class JavaSortsMain {
      * If the sorting task completes successfully within the specified timeout, the result is retrieved from the Future object.
      * If the sorting task is interrupted or encounters an exception during execution, an appropriate logging statement is generated.
      * Finally, the ExecutorService is shut down and the sorted list is logged to a database using the DB_LOGGER object.
-     * A logging statement is also generated to inform the completion of the sorting task along with the sorting algorithm name and execution time.
+     * A logging statement is also gene5rated to inform the completion of the sorting task along with the sorting algorithm name and execution time.
      *
      * @param list                    the list to be sorted
      * @param name                    the name of the sorting algorithm

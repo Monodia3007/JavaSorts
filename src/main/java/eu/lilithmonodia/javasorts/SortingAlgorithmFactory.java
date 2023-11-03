@@ -33,6 +33,7 @@ public class SortingAlgorithmFactory {
         sortingAlgorithms.put("StalinSort", new StalinSort());
         sortingAlgorithms.put("ShellSort", new ShellSort());
         sortingAlgorithms.put("RadixSort", new RadixSort());
+        sortingAlgorithms.put("LateStageCapitalismSort", new LateStageCapitalismSort());
     }
 
     /**
