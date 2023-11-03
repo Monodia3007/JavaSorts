@@ -30,10 +30,8 @@ public class SortingAlgorithmFactory {
         sortingAlgorithms.put("InsertionSort", new InsertionSort());
         sortingAlgorithms.put("BozoSort", new BozoSort());
         sortingAlgorithms.put("StoogeSort", new StoogeSort());
-        sortingAlgorithms.put("StalinSort", new StalinSort());
         sortingAlgorithms.put("ShellSort", new ShellSort());
         sortingAlgorithms.put("RadixSort", new RadixSort());
-        sortingAlgorithms.put("LateStageCapitalismSort", new LateStageCapitalismSort());
     }
 
     /**

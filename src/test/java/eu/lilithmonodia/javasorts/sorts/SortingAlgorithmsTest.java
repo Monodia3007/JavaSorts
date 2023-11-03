@@ -18,8 +18,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class SortingAlgorithmsTest {
     private static final Logger logger = Logger.getLogger(SortingAlgorithmsTest.class.getName());
 
-    private static final List<String> ALGORITHMS = Arrays.asList(
-            "QuickSort", "MergeSort", "HeapSort", "PancakeSort", "BogoSort", "SlowSort", "BubbleSort");
+    private static final List<String> ALGORITHMS = Arrays.asList("QuickSort", "MergeSort", "HeapSort", "PancakeSort",
+            "BogoSort", "SlowSort", "BubbleSort", "SelectionSort", "InsertionSort", "BozoSort", "StoogeSort",
+            "ShellSort", "RadixSort");
 
     private SortingAlgorithmFactory factory;
 
