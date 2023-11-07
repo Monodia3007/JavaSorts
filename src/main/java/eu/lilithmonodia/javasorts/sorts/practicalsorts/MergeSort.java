@@ -1,6 +1,7 @@
 package eu.lilithmonodia.javasorts.sorts.practicalsorts;
 
 import eu.lilithmonodia.javasorts.sorts.SortingAlgorithm;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,7 +46,7 @@ public class MergeSort extends SortingAlgorithm {
      * @param mid  the ending index of the first subarray (exclusive)
      * @param high the ending index of the second subarray (inclusive)
      */
-    private void merge(List<Integer> list, int low, int mid, int high) {
+    private void merge(@NotNull List<Integer> list, int low, int mid, int high) {
         int n1 = mid - low + 1;
         int n2 = high - mid;
 

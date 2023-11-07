@@ -1,6 +1,7 @@
 package eu.lilithmonodia.javasorts.sorts.impracticalsorts;
 
 import eu.lilithmonodia.javasorts.sorts.SortingAlgorithm;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -21,7 +22,7 @@ public class PancakeSort extends SortingAlgorithm {
      * @param list the List of Integers to be sorted
      */
     @Override
-    public void sort(List<Integer> list) {
+    public void sort(@NotNull List<Integer> list) {
         int n = list.size();
         for (int i = n; i > 1; i--) {
             int maxIndex = findMaxIndex(list, i);
@@ -56,7 +57,7 @@ public class PancakeSort extends SortingAlgorithm {
      * @param list the List of Integers to modify
      * @param k    the index of the last element in the sub-list to reverse
      */
-    private void flip(List<Integer> list, int k) {
+    private void flip(@NotNull List<Integer> list, int k) {
         List<Integer> sublist = list.subList(0, k + 1);
         List<Integer> reversedSublist = new ArrayList<>(sublist);
         Collections.reverse(reversedSublist);

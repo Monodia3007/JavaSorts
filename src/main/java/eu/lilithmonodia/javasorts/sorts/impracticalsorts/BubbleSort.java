@@ -1,6 +1,7 @@
 package eu.lilithmonodia.javasorts.sorts.impracticalsorts;
 
 import eu.lilithmonodia.javasorts.sorts.SortingAlgorithm;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
@@ -15,7 +16,7 @@ public class BubbleSort extends SortingAlgorithm {
      * @param list the list of integers to be sorted
      */
     @Override
-    public void sort(List<Integer> list) {
+    public void sort(@NotNull List<Integer> list) {
         int n = list.size();
         for (int i = 0; i < n - 1; i++)
             for (int j = 0; j < n - i - 1; j++)

@@ -1,6 +1,7 @@
 package eu.lilithmonodia.javasorts.sorts.practicalsorts;
 
 import eu.lilithmonodia.javasorts.sorts.SortingAlgorithm;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
@@ -61,7 +62,7 @@ public class TimSort extends SortingAlgorithm {
     }
 
     @Override
-    public void sort(List<Integer> list) {
+    public void sort(@NotNull List<Integer> list) {
         int n = list.size();
         for (int i = 0; i < n; i += RUN) {
             insertionSort(list, i, Math.min((i + RUN - 1), (n - 1)));

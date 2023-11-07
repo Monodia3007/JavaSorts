@@ -1,6 +1,7 @@
 package eu.lilithmonodia.javasorts.sorts;
 
 import eu.lilithmonodia.javasorts.util.TimeUtils;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +25,7 @@ public abstract class SortingAlgorithm {
      *
      * @return a list of random integers of the specified size
      */
-    public static List<Integer> generateRandomList(int size) {
+    public static @NotNull List<Integer> generateRandomList(int size) {
         List<Integer> list = new ArrayList<>();
         for (int i = 0; i < size; i++) {
             list.add(RANDOM.nextInt(Integer.MAX_VALUE));
@@ -46,7 +47,7 @@ public abstract class SortingAlgorithm {
      * @param algorithmName The name of the sorting algorithm being used.
      * @param outputSb      The optional StringBuilder to which the output will be appended.
      */
-    public void displayAndTime(List<Integer> list, String algorithmName, StringBuilder outputSb) {
+    public void displayAndTime(@NotNull List<Integer> list, String algorithmName, StringBuilder outputSb) {
         String original = "Original List for " + algorithmName + " (first 10 elements): " + list.subList(0, Math.min(list.size(), 10)) + "... ";
         String sorted;
         long startTime = System.nanoTime();

@@ -2,6 +2,7 @@ package eu.lilithmonodia.javasorts;
 
 import eu.lilithmonodia.javasorts.database.DatabaseLogger;
 import eu.lilithmonodia.javasorts.sorts.SortingAlgorithm;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -83,7 +84,7 @@ public class JavaSortsMain {
      * @param algorithmNames          an array of strings representing the names of the sorting algorithms to be used
      * @param sortingAlgorithmFactory the factory object used to create instances of sorting algorithms
      */
-    private static void performAndLogSortingTasks(List<Integer> list, String[] algorithmNames, SortingAlgorithmFactory sortingAlgorithmFactory) {
+    private static void performAndLogSortingTasks(List<Integer> list, String @NotNull [] algorithmNames, SortingAlgorithmFactory sortingAlgorithmFactory) {
         ExecutorService executor = Executors.newFixedThreadPool(algorithmNames.length);
 
         List<Future<?>> futures = new ArrayList<>();
@@ -107,7 +108,7 @@ public class JavaSortsMain {
      * @param name                    the name of the sorting algorithm to be used
      * @param sortingAlgorithmFactory the factory object used to create the sorting algorithm
      */
-    private static void sortAndLog(List<Integer> list, String name, SortingAlgorithmFactory sortingAlgorithmFactory) {
+    private static void sortAndLog(List<Integer> list, String name, @NotNull SortingAlgorithmFactory sortingAlgorithmFactory) {
         StringBuilder outputSb = new StringBuilder();
         SortingAlgorithm algorithm = sortingAlgorithmFactory.getSortingAlgorithm(name);
 
@@ -154,7 +155,7 @@ public class JavaSortsMain {
      *
      * @param futures the list of Future tasks to wait for completion
      */
-    private static void waitForTasksCompletion(List<Future<?>> futures) {
+    private static void waitForTasksCompletion(@NotNull List<Future<?>> futures) {
         for (Future<?> future : futures) {
             try {
                 future.get(TIMEOUT, UNIT);

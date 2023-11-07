@@ -10,6 +10,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Arrays;
 import java.util.List;
@@ -49,7 +51,7 @@ public class JavaFXSortsMain extends Application {
      * @param primaryStage The primary stage representing the main window of the application.
      */
     @Override
-    public void start(Stage primaryStage) {
+    public void start(@NotNull Stage primaryStage) {
         primaryStage.setTitle("Sorting Algorithms");
 
         TextField inputField = new TextField();
@@ -86,9 +88,9 @@ public class JavaFXSortsMain extends Application {
             }
 
             spinner.setVisible(true);
-            Task<Void> task = new Task<Void>() {
+            Task<Void> task = new Task<>() {
                 @Override
-                protected Void call() {
+                protected @Nullable Void call() {
                     List<Integer> list = SortingAlgorithm.generateRandomList(listLength);
                     StringBuilder outputSb = new StringBuilder();
                     for (SortingAlgorithm sortingAlgorithm : sortingAlgorithms) {
@@ -119,7 +121,7 @@ public class JavaFXSortsMain extends Application {
      *
      * @return The newly created stage for the new window.
      */
-    private Stage createNewWindow(String outputSb) {
+    private @NotNull Stage createNewWindow(String outputSb) {
         Label resultLabel = new Label(outputSb);
         resultLabel.setWrapText(true);
         resultLabel.setStyle("-fx-font-family: monospace; -fx-font-size: 12pt; -fx-padding: 10;");

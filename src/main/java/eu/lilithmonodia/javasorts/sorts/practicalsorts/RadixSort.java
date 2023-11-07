@@ -1,6 +1,7 @@
 package eu.lilithmonodia.javasorts.sorts.practicalsorts;
 
 import eu.lilithmonodia.javasorts.sorts.SortingAlgorithm;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +21,7 @@ public class RadixSort extends SortingAlgorithm {
      *
      * @return the maximum value in the list
      */
-    private static int findMax(List<Integer> list) {
+    private static int findMax(@NotNull List<Integer> list) {
         if (list.isEmpty()) {
             return -1; // Indicates list is empty. This value won't affect the actual algorithm.
         }
@@ -40,7 +41,7 @@ public class RadixSort extends SortingAlgorithm {
      * @param list the list of integers to sort
      * @param exp  the exponent value used for sorting (usually powers of 10)
      */
-    private static void countSort(List<Integer> list, int exp) {
+    private static void countSort(@NotNull List<Integer> list, int exp) {
         int n = list.size();
         List<Integer> output = new ArrayList<>(n);
         for (int i = 0; i < n; i++) {
