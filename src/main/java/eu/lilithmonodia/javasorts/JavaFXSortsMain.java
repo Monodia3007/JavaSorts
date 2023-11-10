@@ -79,7 +79,7 @@ public class JavaFXSortsMain extends Application {
                 return;
             }
 
-            int listLength;
+            long listLength;
             try {
                 listLength = Integer.parseInt(input);
             } catch (NumberFormatException exception) {

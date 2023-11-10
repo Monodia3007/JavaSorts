@@ -25,7 +25,7 @@ public abstract class SortingAlgorithm {
      *
      * @return a list of random integers of the specified size
      */
-    public static @NotNull List<Integer> generateRandomList(int size) {
+    public static @NotNull List<Integer> generateRandomList(long size) {
         List<Integer> list = new ArrayList<>();
         for (int i = 0; i < size; i++) {
             list.add(RANDOM.nextInt(Integer.MAX_VALUE));

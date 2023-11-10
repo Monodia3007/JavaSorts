@@ -22,7 +22,7 @@ class SortingAlgorithmTest {
     @Test
     void generateRandomListShouldGenerateCorrectSizeList() {
         logger.info("Checking list generation correctness...");
-        int size = 10;
+        long size = 10;
         List<Integer> list = SortingAlgorithm.generateRandomList(size);
 
         assertEquals(size, list.size(), "The size of the list is not correct.");

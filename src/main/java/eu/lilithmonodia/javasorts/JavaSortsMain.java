@@ -22,7 +22,7 @@ import static java.lang.System.exit;
 public class JavaSortsMain {
     private static final Logger LOGGER = Logger.getLogger(JavaSortsMain.class.getName());
     private static final long TIMEOUT = 120;
-    private static final TimeUnit UNIT = TimeUnit.SECONDS;
+    private static final TimeUnit UNIT = TimeUnit.MINUTES;
     private static final DatabaseLogger DB_LOGGER = new DatabaseLogger();
 
     /**
@@ -40,7 +40,7 @@ public class JavaSortsMain {
                 "ShellSort", "RadixSort", "TimSort"};
 
         while (true) {
-            int listLength = getListLengthFromUserInput();
+            long listLength = getListLengthFromUserInput();
 
             if (listLength == -1) break;
 
@@ -57,9 +57,9 @@ public class JavaSortsMain {
      *
      * @return The length of the list provided by the user, or -1 if the user chooses to quit.
      */
-    private static int getListLengthFromUserInput() {
+    private static long getListLengthFromUserInput() {
         Scanner scanner = new Scanner(System.in);
-        int listLength;
+        long listLength;
 
         while (true) {
             LOGGER.log(Level.INFO, "Enter the desired length of the list or 'q' to quit: ");
@@ -70,7 +70,7 @@ public class JavaSortsMain {
             }
 
             try {
-                listLength = Integer.parseInt(userInput);
+                listLength = Long.parseLong(userInput);
                 break;
             } catch (NumberFormatException e) {
                 LOGGER.log(Level.INFO, "Invalid input! Please enter a number.");
