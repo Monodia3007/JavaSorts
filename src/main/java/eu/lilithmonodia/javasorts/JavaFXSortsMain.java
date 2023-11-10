@@ -81,7 +81,7 @@ public class JavaFXSortsMain extends Application {
 
             long listLength;
             try {
-                listLength = Integer.parseInt(input);
+                listLength = Long.parseLong(input);
             } catch (NumberFormatException exception) {
                 outputLabel.setText("Invalid input!");
                 return;
