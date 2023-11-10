@@ -16,6 +16,9 @@ import java.util.regex.Pattern;
 import static eu.lilithmonodia.javasorts.sorts.SortingAlgorithm.generateRandomList;
 import static java.lang.System.exit;
 
+/**
+ * The main class responsible for executing sorting tasks using different sorting algorithms.
+ */
 public class JavaSortsMain {
     private static final Logger LOGGER = Logger.getLogger(JavaSortsMain.class.getName());
     private static final long TIMEOUT = 120;

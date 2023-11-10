@@ -5,10 +5,21 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
+/**
+ * TimSort is a sorting algorithm that extends the SortingAlgorithm class. It uses a combination of Insertion Sort
+ * and Merge Sort to sort a given list of integers.
+ */
 public class TimSort extends SortingAlgorithm {
 
     private static final int RUN = 32;
 
+    /**
+     * sorts a subarray of a List using the insertion sort algorithm
+     *
+     * @param list  the List to be sorted
+     * @param left  the starting index of the subarray
+     * @param right the ending index of the subarray
+     */
     public void insertionSort(List<Integer> list, int left, int right) {
         for (int i = left + 1; i <= right; i++) {
             int temp = list.get(i);
@@ -21,6 +32,14 @@ public class TimSort extends SortingAlgorithm {
         }
     }
 
+    /**
+     * Merges two subarrays of a List using the merge sort algorithm
+     *
+     * @param list the List to be sorted
+     * @param l the starting index of the first subarray
+     * @param m the ending index of the first subarray
+     * @param r the ending index of the second subarray
+     */
     public void merge(List<Integer> list, int l, int m, int r) {
         int len1 = m - l + 1;
         int len2 = r - m;
@@ -61,6 +80,11 @@ public class TimSort extends SortingAlgorithm {
         }
     }
 
+    /**
+     * Sorts a List using the TimSort algorithm
+     *
+     * @param list the List to be sorted
+     */
     @Override
     public void sort(@NotNull List<Integer> list) {
         int n = list.size();
