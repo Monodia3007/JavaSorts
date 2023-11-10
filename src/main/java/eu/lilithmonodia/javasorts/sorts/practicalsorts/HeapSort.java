@@ -1,6 +1,7 @@
 package eu.lilithmonodia.javasorts.sorts.practicalsorts;
 
 import eu.lilithmonodia.javasorts.sorts.SortingAlgorithm;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Collections;
 import java.util.List;
@@ -31,7 +32,7 @@ public class HeapSort extends SortingAlgorithm {
      * @param list the list of integers to be sorted
      */
     @Override
-    public void sort(List<Integer> list) {
+    public void sort(@NotNull List<Integer> list) {
         int n = list.size();
 
         for (int i = n / 2 - 1; i >= 0; i--) {

@@ -1,6 +1,7 @@
 package eu.lilithmonodia.javasorts.sorts.impracticalsorts;
 
 import eu.lilithmonodia.javasorts.sorts.SortingAlgorithm;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Collections;
 import java.util.List;
@@ -40,7 +41,7 @@ public class BogoSort extends SortingAlgorithm {
      *
      * @return true if the list is sorted in ascending order, false otherwise
      */
-    private boolean isSorted(List<Integer> list) {
+    private boolean isSorted(@NotNull List<Integer> list) {
         for (int i = 0; i < list.size() - 1; i++) {
             if (list.get(i) > list.get(i + 1)) {
                 return false;

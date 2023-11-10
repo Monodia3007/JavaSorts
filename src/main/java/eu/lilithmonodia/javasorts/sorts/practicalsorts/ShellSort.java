@@ -1,6 +1,7 @@
 package eu.lilithmonodia.javasorts.sorts.practicalsorts;
 
 import eu.lilithmonodia.javasorts.sorts.SortingAlgorithm;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
@@ -15,7 +16,7 @@ public class ShellSort extends SortingAlgorithm {
      * @param list the list of integers to be sorted
      */
     @Override
-    public void sort(List<Integer> list) {
+    public void sort(@NotNull List<Integer> list) {
         int n = list.size();
         int h = 1;
         while (h < n / 3) {

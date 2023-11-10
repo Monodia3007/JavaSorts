@@ -1,6 +1,7 @@
 package eu.lilithmonodia.javasorts.sorts.impracticalsorts;
 
 import eu.lilithmonodia.javasorts.sorts.SortingAlgorithm;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Collections;
 import java.util.List;
@@ -19,7 +20,7 @@ public class BozoSort extends SortingAlgorithm {
      *
      * @return A boolean value indicating whether the list is sorted or not.
      */
-    private static boolean isSorted(List<Integer> list) {
+    private static boolean isSorted(@NotNull List<Integer> list) {
         for (int i = 0; i < list.size() - 1; i++) {
             if (list.get(i) > list.get(i + 1)) {
                 return false;

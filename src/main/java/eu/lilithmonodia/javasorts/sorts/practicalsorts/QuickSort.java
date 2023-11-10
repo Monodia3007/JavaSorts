@@ -1,6 +1,7 @@
 package eu.lilithmonodia.javasorts.sorts.practicalsorts;
 
 import eu.lilithmonodia.javasorts.sorts.SortingAlgorithm;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Collections;
 import java.util.List;
@@ -46,7 +47,7 @@ public class QuickSort extends SortingAlgorithm {
      *
      * @return the index of the pivot element after partitioning
      */
-    private int partition(List<Integer> list, int low, int high) {
+    private int partition(@NotNull List<Integer> list, int low, int high) {
         int pivot = list.get(high);
         int i = low - 1;
         for (int j = low; j < high; j++) {
