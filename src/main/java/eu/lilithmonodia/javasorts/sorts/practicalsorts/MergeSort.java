@@ -49,28 +49,19 @@ public class MergeSort extends SortingAlgorithm {
      * @param high the ending index of the second subarray (inclusive)
      */
     private void merge(@NotNull List<Integer> list, int low, int mid, int high) {
-        int n1 = mid - low + 1;
-        int n2 = high - mid;
-
-        List<Integer> left = new ArrayList<>(list.subList(low, low + n1));
-        List<Integer> right = new ArrayList<>(list.subList(mid + 1, mid + 1 + n2));
+        List<Integer> left = new ArrayList<>(list.subList(low, mid + 1));
+        List<Integer> right = new ArrayList<>(list.subList(mid + 1, high + 1));
 
         int i = 0;
         int j = 0;
         int k = low;
-        while (i < n1 && j < n2) {
-            if (left.get(i) <= right.get(j)) {
-                list.set(k++, left.get(i++));
-            } else {
-                list.set(k++, right.get(j++));
-            }
+        while (i < left.size() && j < right.size()) {
+            list.set(k++, left.get(i) <= right.get(j) ? left.get(i++) : right.get(j++));
         }
-
-        while (i < n1) {
+        while (i < left.size()) {
             list.set(k++, left.get(i++));
         }
-
-        while (j < n2) {
+        while (j < right.size()) {
             list.set(k++, right.get(j++));
         }
     }
