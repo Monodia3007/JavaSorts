@@ -9,6 +9,8 @@ import java.util.List;
  * <p>
  * This class extends the SortingAlgorithm abstract class and overrides the sort() method to implement the StoogeSort
  * algorithm.
+ *
+ * @see SortingAlgorithm
  */
 public class StoogeSort extends SortingAlgorithm {
     /**
@@ -32,7 +34,7 @@ public class StoogeSort extends SortingAlgorithm {
         if (l >= h)
             return;
 
-        // If first element is smaller than last,
+        // If the first element is smaller than the last,
         // swap them
         if (list.get(l) > list.get(h)) {
             // swap l and h

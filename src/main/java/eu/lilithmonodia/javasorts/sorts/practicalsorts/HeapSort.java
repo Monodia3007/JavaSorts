@@ -23,6 +23,8 @@ import java.util.List;
  * heapSort.sort(list);
  * System.out.println(list); // Output: [1, 2, 5, 6, 8, 9]
  * }</pre>
+ *
+ * @see SortingAlgorithm
  */
 public class HeapSort extends SortingAlgorithm {
 

@@ -10,6 +10,8 @@ import java.util.List;
 /**
  * The QuickSort class is a subclass of SortingAlgorithm. It provides an implementation of the QuickSort algorithm to
  * sort a list of integers.
+ *
+ * @see SortingAlgorithm
  */
 public class QuickSort extends SortingAlgorithm {
 

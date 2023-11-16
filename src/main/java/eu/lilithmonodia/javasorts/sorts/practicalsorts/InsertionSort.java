@@ -9,6 +9,8 @@ import java.util.List;
 /**
  * The InsertionSort class is a sorting algorithm that extends the SortingAlgorithm class. It implements the sort()
  * method to sort a given List of integers using the Insertion Sort algorithm.
+ *
+ * @see SortingAlgorithm
  */
 public class InsertionSort extends SortingAlgorithm {
     /**

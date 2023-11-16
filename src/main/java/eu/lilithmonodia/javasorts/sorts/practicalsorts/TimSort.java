@@ -8,6 +8,8 @@ import java.util.List;
 /**
  * TimSort is a sorting algorithm that extends the SortingAlgorithm class. It uses a combination of Insertion Sort
  * and Merge Sort to sort a given list of integers.
+ *
+ * @see SortingAlgorithm
  */
 public class TimSort extends SortingAlgorithm {
 

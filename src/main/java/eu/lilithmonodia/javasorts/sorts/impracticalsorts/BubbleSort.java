@@ -8,6 +8,8 @@ import java.util.List;
 /**
  * BubbleSort is a class that extends the SortingAlgorithm class and provides the implementation for the sort method
  * using the bubble sort algorithm.
+ *
+ * @see SortingAlgorithm
  */
 public class BubbleSort extends SortingAlgorithm {
     /**

@@ -8,6 +8,8 @@ import java.util.List;
 /**
  * ShellSort is a class that implements the Shell Sort algorithm to sort a given List of Integers. It extends the
  * SortingAlgorithm class.
+ *
+ * @see SortingAlgorithm
  */
 public class ShellSort extends SortingAlgorithm {
     /**
