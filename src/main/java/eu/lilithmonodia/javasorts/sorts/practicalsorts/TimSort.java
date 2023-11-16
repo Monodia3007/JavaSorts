@@ -42,17 +42,15 @@ public class TimSort extends SortingAlgorithm {
      * @param m the ending index of the first subarray
      * @param r the ending index of the second subarray
      */
-    public void merge(List<Integer> list, int l, int m, int r) {
+    public void merge(@NotNull List<Integer> list, int l, int m, int r) {
         int len1 = m - l + 1;
         int len2 = r - m;
-        int[] left = new int[len1];
-        int[] right = new int[len2];
-        for (int x = 0; x < len1; x++) {
-            left[x] = list.get(l + x);
-        }
-        for (int x = 0; x < len2; x++) {
-            right[x] = list.get(m + 1 + x);
-        }
+
+        Integer[] left = new Integer[len1];
+        Integer[] right = new Integer[len2];
+
+        list.subList(l, m + 1).toArray(left);
+        list.subList(m + 1, r + 1).toArray(right);
 
         int i = 0;
         int j = 0;
@@ -60,25 +58,18 @@ public class TimSort extends SortingAlgorithm {
 
         while (i < len1 && j < len2) {
             if (left[i] <= right[j]) {
-                list.set(k, left[i]);
-                i++;
+                list.set(k++, left[i++]);
             } else {
-                list.set(k, right[j]);
-                j++;
+                list.set(k++, right[j++]);
             }
-            k++;
         }
 
         while (i < len1) {
-            list.set(k, left[i]);
-            k++;
-            i++;
+            list.set(k++, left[i++]);
         }
 
         while (j < len2) {
-            list.set(k, right[j]);
-            k++;
-            j++;
+            list.set(k++, right[j++]);
         }
     }
 
