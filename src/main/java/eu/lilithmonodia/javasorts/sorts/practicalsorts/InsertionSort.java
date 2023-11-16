@@ -20,8 +20,7 @@ public class InsertionSort extends SortingAlgorithm {
      */
     @Override
     public void sort(@NotNull List<Integer> list) {
-        int n = list.size();
-        for (int i = 1; i < n; ++i) {
+        for (int i = 1; i < list.size(); ++i) {
             int key = list.get(i);
             int j = i - 1;
 

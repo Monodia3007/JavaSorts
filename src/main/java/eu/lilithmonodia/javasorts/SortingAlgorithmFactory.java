@@ -19,6 +19,10 @@ public class SortingAlgorithmFactory {
      * initializes a map of sorting algorithms with their corresponding names.
      */
     public SortingAlgorithmFactory() {
+        initializeSortingAlgorithms();
+    }
+
+    private void initializeSortingAlgorithms() {
         sortingAlgorithms.put("QuickSort", new QuickSort());
         sortingAlgorithms.put("MergeSort", new MergeSort());
         sortingAlgorithms.put("HeapSort", new HeapSort());
@@ -43,6 +47,10 @@ public class SortingAlgorithmFactory {
      * @return the sorting algorithm corresponding to the given type
      */
     public SortingAlgorithm getSortingAlgorithm(String type) {
-        return sortingAlgorithms.get(type);
+        SortingAlgorithm algorithm = sortingAlgorithms.get(type);
+        if (algorithm == null) {
+            throw new IllegalArgumentException("Invalid sorting algorithm type: " + type);
+        }
+        return algorithm;
     }
 }
