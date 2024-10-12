@@ -16,7 +16,6 @@ public class TimeUtils {
      * Formats the given duration in nanoseconds into a human-readable string representation.
      *
      * @param nanos the duration in nanoseconds to format
-     *
      * @return the formatted string representation of the duration
      */
     public static @NotNull String formatNanos(long nanos) {

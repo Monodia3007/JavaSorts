@@ -38,9 +38,9 @@ public class TimSort extends SortingAlgorithm {
      * Merges two subarrays of a List using the merge sort algorithm
      *
      * @param list the List to be sorted
-     * @param l the starting index of the first subarray
-     * @param m the ending index of the first subarray
-     * @param r the ending index of the second subarray
+     * @param l    the starting index of the first subarray
+     * @param m    the ending index of the first subarray
+     * @param r    the ending index of the second subarray
      */
     public void merge(@NotNull List<Integer> list, int l, int m, int r) {
         int len1 = m - l + 1;

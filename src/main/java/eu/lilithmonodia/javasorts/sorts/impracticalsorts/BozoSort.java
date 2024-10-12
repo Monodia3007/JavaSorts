@@ -19,7 +19,6 @@ public class BozoSort extends SortingAlgorithm {
      * Checks whether the given list of integers is sorted in non-decreasing order.
      *
      * @param list The list of integers to be checked.
-     *
      * @return A boolean value indicating whether the list is sorted or not.
      */
     private static boolean isSorted(@NotNull List<Integer> list) {

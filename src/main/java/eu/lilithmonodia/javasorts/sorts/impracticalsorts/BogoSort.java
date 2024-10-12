@@ -38,7 +38,6 @@ public class BogoSort extends SortingAlgorithm {
      * Checks whether the given list of integers is sorted in ascending order.
      *
      * @param list the list of integers to check
-     *
      * @return true if the list is sorted in ascending order, false otherwise
      */
     private boolean isSorted(@NotNull List<Integer> list) {

@@ -18,7 +18,6 @@ public class RadixSort extends SortingAlgorithm {
      * Finds the maximum value in the given list of integers.
      *
      * @param list the list of integers
-     *
      * @return the maximum value in the list
      */
     private static int findMax(@NotNull List<Integer> list) {

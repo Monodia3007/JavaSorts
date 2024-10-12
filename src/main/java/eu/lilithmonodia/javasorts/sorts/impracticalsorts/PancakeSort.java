@@ -40,7 +40,6 @@ public class PancakeSort extends SortingAlgorithm {
      *
      * @param list the List of Integers to search in
      * @param n    the number of elements in the sub-list to search in
-     *
      * @return the index of the maximum element in the sub-list
      */
     private int findMaxIndex(List<Integer> list, int n) {

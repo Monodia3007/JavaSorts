@@ -51,9 +51,9 @@ public class HeapSort extends SortingAlgorithm {
      * MaintainHeapInvariant is a helper method used in the heap sort algorithm to maintain the heap property of a binary tree rooted
      * at a specified index i in the given list of integers.
      *
-     * @param heap the list of integers
-     * @param sizeOfHeap    the size of the heap
-     * @param rootIndex    the index of the root of the subtree to be heapified
+     * @param heap       the list of integers
+     * @param sizeOfHeap the size of the heap
+     * @param rootIndex  the index of the root of the subtree to be heapified
      */
     private void maintainHeapInvariant(final List<Integer> heap, final int sizeOfHeap, final int rootIndex) {
         int largestElementIndex = rootIndex;

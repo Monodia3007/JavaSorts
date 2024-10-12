@@ -22,7 +22,6 @@ public abstract class SortingAlgorithm {
      * Generates a list of random integers.
      *
      * @param size the size of the list to generate
-     *
      * @return a list of random integers of the specified size
      */
     public static @NotNull List<Integer> generateRandomList(long size) {
