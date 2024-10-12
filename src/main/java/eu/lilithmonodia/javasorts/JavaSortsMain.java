@@ -116,7 +116,6 @@ public class JavaSortsMain {
      * Extracts the time information from the given output string.
      *
      * @param output the output string from which to extract the time information
-     *
      * @return the extracted time information if found, or "Time not available" if not found
      */
     private static String extractTimeFromOutput(String output) {
@@ -128,9 +127,9 @@ public class JavaSortsMain {
     /**
      * Executes a sorting task using the specified algorithm and waits for its completion.
      *
-     * @param listCopy   the list to be sorted
-     * @param name       the name of the sorting task
-     * @param algorithm  the sorting algorithm to be used
+     * @param listCopy  the list to be sorted
+     * @param name      the name of the sorting task
+     * @param algorithm the sorting algorithm to be used
      */
     private static void executeSortingTask(List<Integer> listCopy, String name, SortingAlgorithm algorithm) {
         StringBuilder outputSb = new StringBuilder();
@@ -142,11 +141,11 @@ public class JavaSortsMain {
     /**
      * Handles the completion of a single Future task.
      *
-     * @param future    the Future task to handle
-     * @param name      the name of the task
-     * @param listCopy  the copy of the list used in the task
-     * @param outputSb  the StringBuilder used to store the task output
-     * @param executor  the ExecutorService used to execute the task
+     * @param future   the Future task to handle
+     * @param name     the name of the task
+     * @param listCopy the copy of the list used in the task
+     * @param outputSb the StringBuilder used to store the task output
+     * @param executor the ExecutorService used to execute the task
      */
     private static void handleSingleFuture(@NotNull Future<?> future, String name, List<Integer> listCopy, StringBuilder outputSb, ExecutorService executor) {
         try {
@@ -166,9 +165,9 @@ public class JavaSortsMain {
     /**
      * Logs the elapsed time for a sorting operation on a list.
      *
-     * @param name      the algorithm name used for sorting
-     * @param listSize  the size of the list being sorted
-     * @param output    the output containing the formatted duration of the sorting operation
+     * @param name     the algorithm name used for sorting
+     * @param listSize the size of the list being sorted
+     * @param output   the output containing the formatted duration of the sorting operation
      */
     private static void logElapsedTime(String name, int listSize, String output) {
         String formattedDuration = extractTimeFromOutput(output);

@@ -43,7 +43,6 @@ public class SortingAlgorithmFactory {
      * Retrieves the sorting algorithm based on the given type.
      *
      * @param type the type of sorting algorithm to retrieve
-     *
      * @return the sorting algorithm corresponding to the given type
      */
     public SortingAlgorithm getSortingAlgorithm(String type) {

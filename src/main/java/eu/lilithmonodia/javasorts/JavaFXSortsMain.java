@@ -118,7 +118,6 @@ public class JavaFXSortsMain extends Application {
      * Creates a new window to display the sorting results.
      *
      * @param outputSb The output string to be displayed in the window.
-     *
      * @return The newly created stage for the new window.
      */
     private @NotNull Stage createNewWindow(String outputSb) {
