@@ -148,7 +148,7 @@ public class JavaSortsMain {
      * @param outputSb  the StringBuilder used to store the task output
      * @param executor  the ExecutorService used to execute the task
      */
-    private static void handleSingleFuture(Future<?> future, String name, List<Integer> listCopy, StringBuilder outputSb, ExecutorService executor) {
+    private static void handleSingleFuture(@NotNull Future<?> future, String name, List<Integer> listCopy, StringBuilder outputSb, ExecutorService executor) {
         try {
             future.get(JavaSortsMain.TIMEOUT, JavaSortsMain.UNIT);
         } catch (InterruptedException e) {
