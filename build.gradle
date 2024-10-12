@@ -36,6 +36,7 @@ test {
 
 application {
     mainClassName = 'eu.lilithmonodia.javasorts.Launcher'
+    mainModule = 'eu.lilithmonodia.javasorts'
 }
 
 jar {
