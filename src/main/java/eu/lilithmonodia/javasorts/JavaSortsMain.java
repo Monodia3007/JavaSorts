@@ -133,9 +133,10 @@ public class JavaSortsMain {
      */
     private static void executeSortingTask(List<Integer> listCopy, String name, SortingAlgorithm algorithm) {
         StringBuilder outputSb = new StringBuilder();
+        StringBuilder rawDuration = new StringBuilder();
         ExecutorService executor = Executors.newSingleThreadExecutor();
-        Future<?> future = executor.submit(() -> algorithm.displayAndTime(listCopy, name, outputSb));
-        handleSingleFuture(future, name, listCopy, outputSb, executor);
+        Future<?> future = executor.submit(() -> algorithm.displayAndTime(listCopy, name, outputSb, rawDuration));
+        handleSingleFuture(future, name, listCopy, outputSb, rawDuration, executor);
     }
 
     /**
@@ -147,7 +148,7 @@ public class JavaSortsMain {
      * @param outputSb the StringBuilder used to store the task output
      * @param executor the ExecutorService used to execute the task
      */
-    private static void handleSingleFuture(@NotNull Future<?> future, String name, List<Integer> listCopy, StringBuilder outputSb, ExecutorService executor) {
+    private static void handleSingleFuture(@NotNull Future<?> future, String name, List<Integer> listCopy, StringBuilder outputSb, StringBuilder rawDuration, ExecutorService executor) {
         try {
             future.get(JavaSortsMain.TIMEOUT, JavaSortsMain.UNIT);
         } catch (InterruptedException e) {
@@ -159,7 +160,7 @@ public class JavaSortsMain {
             executor.shutdown();
         }
 
-        logElapsedTime(name, listCopy.size(), outputSb.toString());
+        logElapsedTime(name, listCopy.size(), outputSb.toString(), Long.parseLong(rawDuration.toString()));
     }
 
     /**
@@ -169,13 +170,13 @@ public class JavaSortsMain {
      * @param listSize the size of the list being sorted
      * @param output   the output containing the formatted duration of the sorting operation
      */
-    private static void logElapsedTime(String name, int listSize, String output) {
+    private static void logElapsedTime(String name, int listSize, String output, long rawDuration) {
         String formattedDuration = extractTimeFromOutput(output);
 
         if (!"Time not available".equals(formattedDuration)) {
             LOGGER.log(Level.INFO, "Sorting with {0} algorithm on list of size {1} took {2}",
                     new Object[]{name, listSize, formattedDuration});
-            DB_LOGGER.addLog(formattedDuration, listSize, name);
+            DB_LOGGER.addLog(rawDuration ,formattedDuration, listSize, name);
         }
     }
 

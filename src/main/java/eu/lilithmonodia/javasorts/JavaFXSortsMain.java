@@ -93,8 +93,9 @@ public class JavaFXSortsMain extends Application {
                 protected @Nullable Void call() {
                     List<Integer> list = SortingAlgorithm.generateRandomList(listLength);
                     StringBuilder outputSb = new StringBuilder();
+                    StringBuilder rawDuration = new StringBuilder();
                     for (SortingAlgorithm sortingAlgorithm : sortingAlgorithms) {
-                        sortingAlgorithm.displayAndTime(list, sortingAlgorithm.getClass().getSimpleName(), outputSb);
+                        sortingAlgorithm.displayAndTime(list, sortingAlgorithm.getClass().getSimpleName(), outputSb, rawDuration);
                     }
 
                     Platform.runLater(() -> {

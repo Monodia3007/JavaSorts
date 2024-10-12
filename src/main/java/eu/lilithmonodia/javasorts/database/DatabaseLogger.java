@@ -17,7 +17,7 @@ public class DatabaseLogger {
     // Create the Logger
     private static final Logger LOG = Logger.getLogger(DatabaseLogger.class.getName());
 
-    private static final String INSERT_LOG = "INSERT INTO log_entries(sorting_time, list_size, algorithm) VALUES (?, ?, ?)";
+    private static final String INSERT_LOG = "INSERT INTO log_entries(raw_sorting_time, formated_sorting_time, list_size, algorithm) VALUES (?, ?, ?, ?)";
 
     /**
      * Establishes a connection to the PostgreSQL database.
@@ -38,20 +38,21 @@ public class DatabaseLogger {
     /**
      * Adds a log entry to the database.
      *
-     * @param sortingTime the time taken for the sorting process
+     * @param formatedSortingTime the time taken for the sorting process
      * @param listSize    the size of the list being sorted
      * @param algorithm   the algorithm used for sorting
      */
-    public void addLog(String sortingTime, int listSize, String algorithm) {
+    public void addLog(long rawSortingTime,String formatedSortingTime, int listSize, String algorithm) {
         try (Connection conn = this.connect()) {
             if (conn == null) {
                 LOG.warning("Connection to database could not be established");
                 return;
             }
             try (PreparedStatement pstmt = conn.prepareStatement(INSERT_LOG)) {
-                pstmt.setString(1, sortingTime);
-                pstmt.setInt(2, listSize);
-                pstmt.setString(3, algorithm);
+                pstmt.setLong(1, rawSortingTime);
+                pstmt.setString(2, formatedSortingTime);
+                pstmt.setInt(3, listSize);
+                pstmt.setString(4, algorithm);
                 pstmt.executeUpdate();
             }
         } catch (SQLException e) {
