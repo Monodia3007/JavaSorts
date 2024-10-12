@@ -59,8 +59,6 @@ public class JavaSortsMain {
      */
     private static long getListLengthFromUserInput() {
         Scanner scanner = new Scanner(System.in);
-        long listLength;
-
         while (true) {
             LOGGER.log(Level.INFO, "Enter the desired length of the list or 'q' to quit: ");
             String userInput = scanner.next();
@@ -70,14 +68,11 @@ public class JavaSortsMain {
             }
 
             try {
-                listLength = Long.parseLong(userInput);
-                break;
+                return Long.parseLong(userInput);
             } catch (NumberFormatException e) {
                 LOGGER.log(Level.INFO, "Invalid input! Please enter a number.");
             }
         }
-
-        return listLength;
     }
 
     /**
@@ -89,27 +84,25 @@ public class JavaSortsMain {
      */
     private static void performAndLogSortingTasks(List<Integer> list, String @NotNull [] algorithmNames, SortingAlgorithmFactory sortingAlgorithmFactory) {
         ExecutorService executor = Executors.newFixedThreadPool(algorithmNames.length);
-        List<Future<?>> futures = new ArrayList<>();
+        List<Future<Runnable>> futures = new ArrayList<>();
+
         for (String name : algorithmNames) {
-            Future<?> future = executor.submit(() -> sortAndLog(list, name, sortingAlgorithmFactory));
+            List<Integer> listCopy = new ArrayList<>(list);
+            SortingAlgorithm algorithm = sortingAlgorithmFactory.getSortingAlgorithm(name);
+            StringBuilder outputSb = new StringBuilder();
+            StringBuilder rawDuration = new StringBuilder();
+
+            Future<Runnable> future = executor.submit(() -> {
+                algorithm.displayAndTime(listCopy, name, outputSb, rawDuration);
+                return null;
+            });
+
             futures.add(future);
         }
-        executor.shutdown();
-        handleFutures(futures);
-        LOGGER.log(Level.INFO, "All tasks have completed execution.");
-    }
 
-    /**
-     * Sorts the given list using the specified sorting algorithm and logs the duration of the sorting process.
-     *
-     * @param list                    the list of integers to be sorted
-     * @param name                    the name of the sorting algorithm to be used
-     * @param sortingAlgorithmFactory the factory object used to create the sorting algorithm
-     */
-    private static void sortAndLog(List<Integer> list, String name, @NotNull SortingAlgorithmFactory sortingAlgorithmFactory) {
-        List<Integer> listCopy = new ArrayList<>(list);
-        SortingAlgorithm algorithm = sortingAlgorithmFactory.getSortingAlgorithm(name);
-        executeSortingTask(listCopy, name, algorithm);
+        executor.shutdown();
+        handleFutures(futures, list.size());
+        LOGGER.log(Level.INFO, "All tasks have completed execution.");
     }
 
     /**
@@ -125,42 +118,33 @@ public class JavaSortsMain {
     }
 
     /**
-     * Executes a sorting task using the specified algorithm and waits for its completion.
-     *
-     * @param listCopy  the list to be sorted
-     * @param name      the name of the sorting task
-     * @param algorithm the sorting algorithm to be used
-     */
-    private static void executeSortingTask(List<Integer> listCopy, String name, SortingAlgorithm algorithm) {
-        StringBuilder outputSb = new StringBuilder();
-        StringBuilder rawDuration = new StringBuilder();
-        ExecutorService executor = Executors.newSingleThreadExecutor();
-        Future<?> future = executor.submit(() -> algorithm.displayAndTime(listCopy, name, outputSb, rawDuration));
-        handleSingleFuture(future, name, listCopy, outputSb, rawDuration, executor);
-    }
-
-    /**
      * Handles the completion of a single Future task.
      *
-     * @param future   the Future task to handle
-     * @param name     the name of the task
-     * @param listCopy the copy of the list used in the task
-     * @param outputSb the StringBuilder used to store the task output
-     * @param executor the ExecutorService used to execute the task
+     * @param future the Future task to handle
+     * @param name   the name of the task
      */
-    private static void handleSingleFuture(@NotNull Future<?> future, String name, List<Integer> listCopy, StringBuilder outputSb, StringBuilder rawDuration, ExecutorService executor) {
+    private static void handleSingleFuture(@NotNull Future<?> future, String name, int listSize, @NotNull StringBuilder outputSb, @NotNull StringBuilder rawDuration) {
         try {
-            future.get(JavaSortsMain.TIMEOUT, JavaSortsMain.UNIT);
+            future.get(TIMEOUT, UNIT);
+            logElapsedTime(name, listSize, outputSb.toString(), Long.parseLong(rawDuration.toString()));
         } catch (InterruptedException e) {
             logException(name);
             Thread.currentThread().interrupt();
         } catch (ExecutionException | TimeoutException e) {
             logException(name);
-        } finally {
-            executor.shutdown();
         }
+    }
 
-        logElapsedTime(name, listCopy.size(), outputSb.toString(), Long.parseLong(rawDuration.toString()));
+    /**
+     * Handles the completion of a list of Future tasks.
+     *
+     * @param futures  the list of Future tasks to handle completion
+     * @param listSize the size of the list being sorted
+     */
+    private static void handleFutures(@NotNull List<Future<Runnable>> futures, int listSize) {
+        for (Future<?> future : futures) {
+            handleSingleFuture(future, "Generic task", listSize, new StringBuilder(), new StringBuilder());
+        }
     }
 
     /**
@@ -176,25 +160,7 @@ public class JavaSortsMain {
         if (!"Time not available".equals(formattedDuration)) {
             LOGGER.log(Level.INFO, "Sorting with {0} algorithm on list of size {1} took {2}",
                     new Object[]{name, listSize, formattedDuration});
-            DB_LOGGER.addLog(rawDuration ,formattedDuration, listSize, name);
-        }
-    }
-
-    /**
-     * Handles the completion of a list of Future tasks.
-     *
-     * @param futures the list of Future tasks to handle completion
-     */
-    private static void handleFutures(@NotNull List<Future<?>> futures) {
-        for (Future<?> future : futures) {
-            try {
-                future.get(TIMEOUT, UNIT);
-            } catch (InterruptedException e) {
-                logException("Generic task");
-                Thread.currentThread().interrupt();
-            } catch (ExecutionException | TimeoutException e) {
-                logException("Generic task");
-            }
+            DB_LOGGER.addLog(rawDuration, formattedDuration, listSize, name);
         }
     }
 

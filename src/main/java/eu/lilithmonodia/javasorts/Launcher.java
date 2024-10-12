@@ -6,15 +6,24 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Launcher class of the project used to access every aspect of the project
+ * The Launcher class serves as the entry point for the application. It handles command-line arguments
+ * to determine whether to run the application in console mode or GUI mode.
+ * <p>
+ * The following command-line arguments are supported:
+ * - --help: Displays usage information.
+ * - --console: Runs the application in console mode.
  */
 public class Launcher {
     private static final Logger LOGGER = Logger.getLogger(Launcher.class.getName());
 
     /**
-     * The main method of the program used to access the two sides of the project
+     * Entry point for the application. Handles command-line arguments to determine
+     * the mode of operation, either console or GUI mode.
      *
-     * @param args argument of the program
+     * @param args Command-line arguments. Valid options are:
+     *             --help: Displays usage information.
+     *             --console: Runs the application in console mode.
+     *             If no arguments are passed, the application runs in GUI mode.
      */
     public static void main(String @NotNull [] args) {
         if (args.length >= 1 && args[0].equals("--help")) {
