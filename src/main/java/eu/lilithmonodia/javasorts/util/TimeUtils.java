@@ -1,5 +1,7 @@
 package eu.lilithmonodia.javasorts.util;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.text.DecimalFormat;
 
 /**
@@ -17,7 +19,7 @@ public class TimeUtils {
      *
      * @return the formatted string representation of the duration
      */
-    public static String formatNanos(long nanos) {
+    public static @NotNull String formatNanos(long nanos) {
         DecimalFormat df = new DecimalFormat("0.00");
 
         double scaledNanos = nanos;
