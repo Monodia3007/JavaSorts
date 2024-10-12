@@ -3,6 +3,8 @@ plugins {
     id 'application'
     id 'org.openjfx.javafxplugin' version '0.0.13'
     id 'com.github.johnrengelman.shadow' version '8.0.0'
+    id "jacoco"
+    id 'org.sonarqube' version '3.5.0.2730'
 }
 
 group = 'eu.lilithmonodia'
@@ -18,9 +20,9 @@ ext {
 
 dependencies {
     implementation 'org.jetbrains:annotations:24.0.0'
-    implementation 'org.postgresql:postgresql:42.2.27'
+    implementation 'org.postgresql:postgresql:42.7.2'
     implementation 'com.google.code.gson:gson:2.8.9'
-    implementation 'commons-io:commons-io:2.11.0'
+    implementation 'commons-io:commons-io:2.14.0'
     testImplementation "org.junit.jupiter:junit-jupiter-api:${junitVersion}"
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
 }
@@ -28,10 +30,6 @@ dependencies {
 javafx {
     version = '17.0.8'
     modules = ['javafx.controls']
-}
-
-test {
-    useJUnitPlatform()
 }
 
 application {
@@ -62,5 +60,32 @@ allprojects {
     tasks.withType(JavaCompile) {
         options.compilerArgs << '-Xlint:deprecation'
         options.deprecation = true
+    }
+}
+
+javadoc {
+    options {
+        encoding = 'UTF-8'
+        charSet = 'UTF-8'
+    }
+}
+
+sonar {
+    properties {
+        property "sonar.projectKey", "Monodia3007_JavaSorts"
+        property "sonar.organization", "monodia3007"
+        property "sonar.host.url", "https://sonarcloud.io"
+    }
+}
+
+test {
+    useJUnitPlatform()
+    finalizedBy jacocoTestReport
+}
+
+jacocoTestReport {
+    dependsOn test // Make jacocoTestReport dependent on the successful completion of test task.
+    reports {
+        xml.required = true  // Enable XML report.
     }
 }
