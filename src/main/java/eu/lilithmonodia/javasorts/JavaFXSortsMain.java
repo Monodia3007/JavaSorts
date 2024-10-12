@@ -11,7 +11,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -22,7 +21,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 
 /**
  * The JavaFXSortsMain class is the main class for the Sorting Algorithms application. It extends the Application class
@@ -159,36 +157,40 @@ public class JavaFXSortsMain extends Application {
      * @param listLength The length of the list to be sorted.
      * @return A Task that performs the sorting.
      */
-    @Contract(value = "_ -> new", pure = true)
     private @NotNull Task<String> createSortingTask(long listLength) {
         return new Task<>() {
             @Override
             protected String call() {
                 List<Integer> list = SortingAlgorithm.generateRandomList(listLength);
+                List<Future<String>> futures = sortingAlgorithms.stream()
+                        .map(algorithm -> executorService.submit(() -> {
+                            List<Integer> listCopy = new ArrayList<>(list);
+                            StringBuilder outputSb = new StringBuilder();
+                            StringBuilder rawDuration = new StringBuilder();
 
-                return sortingAlgorithms.stream().map(algorithm -> {
-                    List<Integer> listCopy = new ArrayList<>(list);
-                    StringBuilder outputSb = new StringBuilder();
-                    StringBuilder rawDuration = new StringBuilder();
+                            try {
+                                algorithm.displayAndTime(listCopy, algorithm.getClass().getSimpleName(), outputSb, rawDuration);
+                                logElapsedTime(algorithm.getClass().getSimpleName(), list.size(), outputSb.toString(), Long.parseLong(rawDuration.toString()));
+                            } catch (Exception e) {
+                                handleTimeoutOrException(e, algorithm.getClass().getSimpleName());
+                            }
 
-                    Future<?> future = executorService.submit(() -> algorithm.displayAndTime(listCopy, algorithm.getClass().getSimpleName(), outputSb, rawDuration));
+                            return outputSb.toString();
+                        }))
+                        .toList();
+
+                StringBuilder results = new StringBuilder();
+                for (Future<String> future : futures) {
                     try {
-                        future.get(TIMEOUT, TimeUnit.SECONDS);
-                        logElapsedTime(algorithm.getClass().getSimpleName(), list.size(), outputSb.toString(), Long.parseLong(rawDuration.toString()));
+                        results.append(future.get(TIMEOUT, TimeUnit.SECONDS)).append("\n");
                     } catch (InterruptedException e) {
                         Thread.currentThread().interrupt(); // Re-interrupt the thread
-                        handleTimeoutOrException(e, algorithm.getClass().getSimpleName());
-                        future.cancel(true);
-                    } catch (ThreadDeath td) {
-                        future.cancel(true);
-                        throw td; // Propagate ThreadDeath
                     } catch (ExecutionException | TimeoutException e) {
-                        handleTimeoutOrException(e, algorithm.getClass().getSimpleName());
-                        future.cancel(true);
+                        handleTimeoutOrException(e, "Unknown");
                     }
+                }
 
-                    return outputSb.toString();
-                }).collect(Collectors.joining("\n"));
+                return results.toString();
             }
         };
     }

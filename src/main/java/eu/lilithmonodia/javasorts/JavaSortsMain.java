@@ -84,7 +84,7 @@ public class JavaSortsMain {
      */
     private static void performAndLogSortingTasks(List<Integer> list, String @NotNull [] algorithmNames, SortingAlgorithmFactory sortingAlgorithmFactory) {
         ExecutorService executor = Executors.newFixedThreadPool(algorithmNames.length);
-        List<Future<Runnable>> futures = new ArrayList<>();
+        List<CompletableFuture<Void>> futures = new ArrayList<>();
 
         for (String name : algorithmNames) {
             List<Integer> listCopy = new ArrayList<>(list);
@@ -92,16 +92,26 @@ public class JavaSortsMain {
             StringBuilder outputSb = new StringBuilder();
             StringBuilder rawDuration = new StringBuilder();
 
-            Future<Runnable> future = executor.submit(() -> {
+            CompletableFuture<Void> future = CompletableFuture.runAsync(() -> {
                 algorithm.displayAndTime(listCopy, name, outputSb, rawDuration);
-                return null;
-            });
+                handleSingleFuture(name, listCopy.size(), outputSb, rawDuration);
+            }, executor);
 
             futures.add(future);
         }
 
-        executor.shutdown();
-        handleFutures(futures, list.size());
+        try {
+            CompletableFuture<Void> allFutures = CompletableFuture.allOf(futures.toArray(new CompletableFuture[0]));
+            allFutures.get(TIMEOUT, UNIT);
+        } catch (InterruptedException e) {
+            LOGGER.log(Level.SEVERE, "Execution was interrupted.", e);
+            Thread.currentThread().interrupt();
+        } catch (ExecutionException | TimeoutException e) {
+            LOGGER.log(Level.SEVERE, "Execution failed or timed out.", e);
+        } finally {
+            executor.shutdown();
+        }
+
         LOGGER.log(Level.INFO, "All tasks have completed execution.");
     }
 
@@ -120,39 +130,26 @@ public class JavaSortsMain {
     /**
      * Handles the completion of a single Future task.
      *
-     * @param future the Future task to handle
-     * @param name   the name of the task
+     * @param name       the name of the task
+     * @param listSize   the size of the list
+     * @param outputSb   the StringBuilder containing the output
+     * @param rawDuration the StringBuilder containing the raw duration
      */
-    private static void handleSingleFuture(@NotNull Future<?> future, String name, int listSize, @NotNull StringBuilder outputSb, @NotNull StringBuilder rawDuration) {
+    private static void handleSingleFuture(String name, int listSize, @NotNull StringBuilder outputSb, @NotNull StringBuilder rawDuration) {
         try {
-            future.get(TIMEOUT, UNIT);
             logElapsedTime(name, listSize, outputSb.toString(), Long.parseLong(rawDuration.toString()));
-        } catch (InterruptedException e) {
+        } catch (Exception e) {
             logException(name);
-            Thread.currentThread().interrupt();
-        } catch (ExecutionException | TimeoutException e) {
-            logException(name);
-        }
-    }
-
-    /**
-     * Handles the completion of a list of Future tasks.
-     *
-     * @param futures  the list of Future tasks to handle completion
-     * @param listSize the size of the list being sorted
-     */
-    private static void handleFutures(@NotNull List<Future<Runnable>> futures, int listSize) {
-        for (Future<?> future : futures) {
-            handleSingleFuture(future, "Generic task", listSize, new StringBuilder(), new StringBuilder());
         }
     }
 
     /**
      * Logs the elapsed time for a sorting operation on a list.
      *
-     * @param name     the algorithm name used for sorting
-     * @param listSize the size of the list being sorted
-     * @param output   the output containing the formatted duration of the sorting operation
+     * @param name       the algorithm name used for sorting
+     * @param listSize   the size of the list being sorted
+     * @param output     the output containing the formatted duration of the sorting operation
+     * @param rawDuration the raw duration of the sorting operation
      */
     private static void logElapsedTime(String name, int listSize, String output, long rawDuration) {
         String formattedDuration = extractTimeFromOutput(output);
