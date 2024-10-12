@@ -16,7 +16,7 @@ public class Launcher {
         } else if (args.length == 0) {
             JavaFXSortsMain.main(args);
         } else {
-            LOGGER.log(Level.SEVERE, "Use java -jar <file-name>.jar --help or java -jar <file-name>.jar");
+            LOGGER.log(Level.SEVERE, "Use java -jar <file-name>.jar --help");
         }
     }
 }
