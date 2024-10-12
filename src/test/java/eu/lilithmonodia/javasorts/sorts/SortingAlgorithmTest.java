@@ -54,8 +54,17 @@ class SortingAlgorithmTest {
         logger.info("Checking list modification through display & timing...");
         List<Integer> list = Arrays.asList(5, 3, 1, 4, 2);
         StringBuilder sb = new StringBuilder();
-        sortingAlgorithm.displayAndTime(list, "DummySortAlgorithm", sb);
+        StringBuilder rawDuration = new StringBuilder();
+        sortingAlgorithm.displayAndTime(list, "DummySortAlgorithm", sb, rawDuration);
         assertArrayEquals(new Integer[]{1, 2, 3, 4, 5}, list.toArray(new Integer[0]));
+
+        // Verify that the rawDuration is a valid long number
+        try {
+            long duration = Long.parseLong(rawDuration.toString());
+            assertTrue(duration > 0, "The duration should be greater than 0.");
+        } catch (NumberFormatException e) {
+            fail("The raw duration is not a valid long number.");
+        }
     }
 
     /**
