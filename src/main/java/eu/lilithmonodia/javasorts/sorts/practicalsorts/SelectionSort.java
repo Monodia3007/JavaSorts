@@ -8,6 +8,8 @@ import java.util.List;
 /**
  * The SelectionSort class implements the SelectionSort algorithm to sort a list of integers in ascending order. The
  * original list is modified in place.
+ *
+ * @see SortingAlgorithm
  */
 public class SelectionSort extends SortingAlgorithm {
     /**
@@ -20,9 +22,9 @@ public class SelectionSort extends SortingAlgorithm {
     public void sort(@NotNull List<Integer> list) {
         int n = list.size();
 
-        // One by one move boundary of unsorted sub-array
+        // One by one move boundary of unsorted subarray
         for (int i = 0; i < n - 1; i++) {
-            // Find the minimum element in unsorted array
+            // Find the minimum element in an unsorted array
             int minIndex = i;
             for (int j = i + 1; j < n; j++) {
                 if (list.get(j) < list.get(minIndex))

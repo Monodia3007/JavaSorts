@@ -5,10 +5,23 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
+/**
+ * TimSort is a sorting algorithm that extends the SortingAlgorithm class. It uses a combination of Insertion Sort
+ * and Merge Sort to sort a given list of integers.
+ *
+ * @see SortingAlgorithm
+ */
 public class TimSort extends SortingAlgorithm {
 
     private static final int RUN = 32;
 
+    /**
+     * sorts a subarray of a List using the insertion sort algorithm
+     *
+     * @param list  the List to be sorted
+     * @param left  the starting index of the subarray
+     * @param right the ending index of the subarray
+     */
     public void insertionSort(List<Integer> list, int left, int right) {
         for (int i = left + 1; i <= right; i++) {
             int temp = list.get(i);
@@ -21,17 +34,23 @@ public class TimSort extends SortingAlgorithm {
         }
     }
 
-    public void merge(List<Integer> list, int l, int m, int r) {
+    /**
+     * Merges two subarrays of a List using the merge sort algorithm
+     *
+     * @param list the List to be sorted
+     * @param l the starting index of the first subarray
+     * @param m the ending index of the first subarray
+     * @param r the ending index of the second subarray
+     */
+    public void merge(@NotNull List<Integer> list, int l, int m, int r) {
         int len1 = m - l + 1;
         int len2 = r - m;
-        int[] left = new int[len1];
-        int[] right = new int[len2];
-        for (int x = 0; x < len1; x++) {
-            left[x] = list.get(l + x);
-        }
-        for (int x = 0; x < len2; x++) {
-            right[x] = list.get(m + 1 + x);
-        }
+
+        Integer[] left = new Integer[len1];
+        Integer[] right = new Integer[len2];
+
+        list.subList(l, m + 1).toArray(left);
+        list.subList(m + 1, r + 1).toArray(right);
 
         int i = 0;
         int j = 0;
@@ -39,28 +58,26 @@ public class TimSort extends SortingAlgorithm {
 
         while (i < len1 && j < len2) {
             if (left[i] <= right[j]) {
-                list.set(k, left[i]);
-                i++;
+                list.set(k++, left[i++]);
             } else {
-                list.set(k, right[j]);
-                j++;
+                list.set(k++, right[j++]);
             }
-            k++;
         }
 
         while (i < len1) {
-            list.set(k, left[i]);
-            k++;
-            i++;
+            list.set(k++, left[i++]);
         }
 
         while (j < len2) {
-            list.set(k, right[j]);
-            k++;
-            j++;
+            list.set(k++, right[j++]);
         }
     }
 
+    /**
+     * Sorts a List using the TimSort algorithm
+     *
+     * @param list the List to be sorted
+     */
     @Override
     public void sort(@NotNull List<Integer> list) {
         int n = list.size();

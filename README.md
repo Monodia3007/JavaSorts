@@ -29,7 +29,6 @@ each algorithm to a database.
 The following sorting algorithms are available in this program.
 
 - Practical Sorting Algorithms:
-    - BubbleSort
     - HeapSort
     - InsertionSort
     - MergeSort
@@ -44,6 +43,7 @@ The following sorting algorithms are available in this program.
     - PancakeSort
     - SlowSort
     - StoogeSort
+    - BubbleSort
 
 ### Note
 

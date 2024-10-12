@@ -9,6 +9,8 @@ import java.util.List;
 
 /**
  * The PancakeSort class implements the pancake sort algorithm, which sorts a list of integers in ascending order.
+ *
+ * @see SortingAlgorithm
  */
 public class PancakeSort extends SortingAlgorithm {
 
