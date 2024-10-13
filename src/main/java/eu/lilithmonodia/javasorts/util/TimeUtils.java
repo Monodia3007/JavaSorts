@@ -9,6 +9,12 @@ import java.text.DecimalFormat;
  */
 public class TimeUtils {
 
+    /**
+     * A utility class for handling time-related operations.
+     * This class is not meant to be instantiated.
+     * <p>
+     * The constructor is private and throws an exception to prevent instantiation.
+     */
     private TimeUtils() {
         throw new IllegalStateException("Utility class");
     }
