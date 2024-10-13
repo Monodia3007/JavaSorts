@@ -24,6 +24,7 @@ public class JavaSortsMain {
     private static final long TIMEOUT = 120;
     private static final TimeUnit UNIT = TimeUnit.SECONDS;
     private static final DatabaseLogger DB_LOGGER = new DatabaseLogger();
+    private static final int REPEATS = 50;
 
     /**
      * The main method of the program. This method is responsible for executing the sorting tasks using different
@@ -35,8 +36,8 @@ public class JavaSortsMain {
      */
     public static void main(String[] args) {
         SortingAlgorithmFactory sortingAlgorithmFactory = new SortingAlgorithmFactory();
-        String[] algorithmNames = {"QuickSort", "MergeSort", "HeapSort", "PancakeSort", "BogoSort",
-                "SlowSort", "BubbleSort", "SelectionSort", "InsertionSort", "BozoSort", "StoogeSort",
+        String[] algorithmNames = {"QuickSort", "MergeSort", "HeapSort", "PancakeSort",
+                "SlowSort", "BubbleSort", "SelectionSort", "InsertionSort", "StoogeSort",
                 "ShellSort", "RadixSort", "TimSort"};
 
         while (true) {
@@ -86,18 +87,20 @@ public class JavaSortsMain {
         ExecutorService executor = Executors.newFixedThreadPool(algorithmNames.length);
         List<CompletableFuture<Void>> futures = new ArrayList<>();
 
-        for (String name : algorithmNames) {
-            List<Integer> listCopy = new ArrayList<>(list);
-            SortingAlgorithm algorithm = sortingAlgorithmFactory.getSortingAlgorithm(name);
-            StringBuilder outputSb = new StringBuilder();
-            StringBuilder rawDuration = new StringBuilder();
+        for (int i = 0; i < REPEATS; i++) {
+            for (String name : algorithmNames) {
+                List<Integer> listCopy = new ArrayList<>(list);
+                SortingAlgorithm algorithm = sortingAlgorithmFactory.getSortingAlgorithm(name);
+                StringBuilder outputSb = new StringBuilder();
+                StringBuilder rawDuration = new StringBuilder();
 
-            CompletableFuture<Void> future = CompletableFuture.runAsync(() -> {
-                algorithm.displayAndTime(listCopy, name, outputSb, rawDuration);
-                handleSingleFuture(name, listCopy.size(), outputSb, rawDuration);
-            }, executor);
+                CompletableFuture<Void> future = CompletableFuture.runAsync(() -> {
+                    algorithm.displayAndTime(listCopy, name, outputSb, rawDuration);
+                    handleSingleFuture(name, listCopy.size(), outputSb, rawDuration);
+                }, executor);
 
-            futures.add(future);
+                futures.add(future);
+            }
         }
 
         try {

@@ -46,7 +46,7 @@ public abstract class SortingAlgorithm {
      * @param algorithmName The name of the sorting algorithm being used.
      * @param outputSb      The optional StringBuilder to which the output will be appended.
      */
-    public void displayAndTime(@NotNull List<Integer> list, String algorithmName, StringBuilder outputSb, StringBuilder rawDuration) {
+    public void displayAndTime(@NotNull List<Integer> list, String algorithmName, StringBuilder outputSb, @NotNull StringBuilder rawDuration) {
         String original = "Original List for " + algorithmName + " (first 10 elements): " + list.subList(0, Math.min(list.size(), 10)) + "... ";
         String sorted;
         long startTime = System.nanoTime();
