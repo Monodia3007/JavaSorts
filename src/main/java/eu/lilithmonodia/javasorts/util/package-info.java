@@ -13,8 +13,8 @@
  *       time-related operations and is intended to be used in situations where precise and
  *       understandable time data is required.</li>
  * </ul>
- *
- * <p>Examples of how to use the package:
+ * <p>
+ * Examples of how to use the package:
  * <pre>{@code
  *     // Formatting a duration in nanoseconds
  *     long durationInNanos = 1234567890L;
@@ -22,6 +22,5 @@
  *     System.out.println(formattedDuration); // Output might be: "1.23 s"
  *     }
  * </pre>
- * </p>
  */
 package eu.lilithmonodia.javasorts.util;

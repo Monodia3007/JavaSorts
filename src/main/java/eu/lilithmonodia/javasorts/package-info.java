@@ -15,8 +15,8 @@
  *
  * <p>The supported sorting algorithms include both practical sorts like QuickSort, MergeSort, and HeapSort,
  * as well as impractical sorts such as BogoSort and SlowSort.</p>
- *
- * <p>Examples of how to use the package:
+ * <p>
+ * Examples of how to use the package:
  * <pre>
  *     // Run the application in console mode
  *     java -jar "file-name".jar --console
@@ -24,6 +24,5 @@
  *     // Run the application in GUI mode
  *     java -jar "file-name".jar
  * </pre>
- * </p>
  */
 package eu.lilithmonodia.javasorts;

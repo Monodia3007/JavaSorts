@@ -10,8 +10,8 @@
  *       database and adding log entries with details about the sorting operations. It includes methods for
  *       establishing a database connection and adding log entries into the database table.</li>
  * </ul>
- *
- * <p>Examples of how to use the package:
+ * <p>
+ * Examples of how to use the package:
  * <pre>
  *     {@code
  *     // Create an instance of DatabaseLogger
@@ -26,6 +26,5 @@
  *     dbLogger.addLog(rawSortingTime, formattedSortingTime, listSize, algorithm);
  *     }
  * </pre>
- * </p>
  */
 package eu.lilithmonodia.javasorts.database;

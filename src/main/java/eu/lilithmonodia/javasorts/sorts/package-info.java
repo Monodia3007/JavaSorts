@@ -21,8 +21,8 @@
  *       that follows the divide-and-conquer approach.</li>
  *   <li>... Other sorting algorithms can be listed similarly ...</li>
  * </ul>
- *
- * <p>Examples of how to use the package:
+ * <p>
+ * Examples of how to use the package:
  * <pre>{@code
  *     // Generating a random list
  *     List<Integer> randomList = SortingAlgorithm.generateRandomList(100);
@@ -37,6 +37,5 @@
  *     System.out.println(outputSb.toString());
  *     }
  * </pre>
- * </p>
  */
 package eu.lilithmonodia.javasorts.sorts;

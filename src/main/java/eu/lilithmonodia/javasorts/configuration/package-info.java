@@ -10,8 +10,8 @@
  *       required to establish a database connection, such as the host address, database username, and password.
  *       It provides a method to read these details from a JSON configuration file named `config.json`.</li>
  * </ul>
- *
- * <p>Examples of how to use the package:
+ * <p>
+ * Examples of how to use the package:
  * <pre>
  *     {@code
  *     // Reading configuration from config.json
@@ -27,6 +27,5 @@
  *     }
  *     }
  * </pre>
- * </p>
  */
 package eu.lilithmonodia.javasorts.configuration;

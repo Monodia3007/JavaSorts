@@ -23,8 +23,8 @@
  *   <li>{@link eu.lilithmonodia.javasorts.sorts.impracticalsorts.BozoSort}: A random sort that shuffles
  *       pairs of elements randomly until the list is sorted, similar to BogoSort but slightly more refined.</li>
  * </ul>
- *
- * <p>Examples of how to use the package:
+ * <p>
+ * Examples of how to use the package:
  * <pre>{@code
  *     // Sorting a list using BogoSort (not recommended for large lists!)
  *     SortingAlgorithm sortingAlgorithm = new BogoSort();
@@ -36,6 +36,5 @@
  *     slowSortAlgorithm.sort(list);
  *     }
  * </pre>
- * </p>
  */
 package eu.lilithmonodia.javasorts.sorts.impracticalsorts;

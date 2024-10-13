@@ -28,8 +28,8 @@
  *       real-world data.</li>
  *   <li>... Other sorting algorithms can be listed similarly ...</li>
  * </ul>
- *
- * <p>Examples of how to use the package:
+ * <p>
+ * Examples of how to use the package:
  * <pre>{@code
  *     // Sorting a list using QuickSort
  *     SortingAlgorithm sortingAlgorithm = new QuickSort();
@@ -41,6 +41,5 @@
  *     mergeSortAlgorithm.sort(list);
  *     }
  * </pre>
- * </p>
  */
 package eu.lilithmonodia.javasorts.sorts.practicalsorts;
