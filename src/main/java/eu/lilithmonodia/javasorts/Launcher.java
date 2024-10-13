@@ -10,8 +10,8 @@ import java.util.logging.Logger;
  * to determine whether to run the application in console mode or GUI mode.
  * <p>
  * The following command-line arguments are supported:
- * - --help: Displays usage information.
- * - --console: Runs the application in console mode.
+ * <li>--help: Displays usage information.</li>
+ * <li>--console: Runs the application in console mode.</li>
  */
 public class Launcher {
     private static final Logger LOGGER = Logger.getLogger(Launcher.class.getName());
@@ -21,9 +21,9 @@ public class Launcher {
      * the mode of operation, either console or GUI mode.
      *
      * @param args Command-line arguments. Valid options are:
-     *             --help: Displays usage information.
-     *             --console: Runs the application in console mode.
-     *             If no arguments are passed, the application runs in GUI mode.
+     *             <li>--help: Displays usage information.</li>
+     *             <li>--console: Runs the application in console mode.</li>
+     *             <li>If no arguments are passed, the application runs in GUI mode.</li>
      */
     public static void main(String @NotNull [] args) {
         if (args.length >= 1 && args[0].equals("--help")) {
