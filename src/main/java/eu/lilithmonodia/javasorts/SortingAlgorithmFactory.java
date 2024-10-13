@@ -37,6 +37,7 @@ public class SortingAlgorithmFactory {
         sortingAlgorithms.put("ShellSort", new ShellSort());
         sortingAlgorithms.put("RadixSort", new RadixSort());
         sortingAlgorithms.put("TimSort", new TimSort());
+        sortingAlgorithms.put("ParallelMergeSort", new ParallelMergeSort());
     }
 
     /**

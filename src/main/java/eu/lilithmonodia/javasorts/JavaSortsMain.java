@@ -38,7 +38,7 @@ public class JavaSortsMain {
         SortingAlgorithmFactory sortingAlgorithmFactory = new SortingAlgorithmFactory();
         String[] algorithmNames = {"QuickSort", "MergeSort", "HeapSort", "PancakeSort",
                 "SlowSort", "BubbleSort", "SelectionSort", "InsertionSort", "StoogeSort",
-                "ShellSort", "RadixSort", "TimSort"};
+                "ShellSort", "RadixSort", "TimSort", "ParallelMergeSort"};
 
         while (true) {
             long listLength = getListLengthFromUserInput();
