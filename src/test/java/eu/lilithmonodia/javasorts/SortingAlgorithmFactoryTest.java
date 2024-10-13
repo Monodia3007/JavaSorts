@@ -113,4 +113,11 @@ class SortingAlgorithmFactoryTest {
         Exception exception = assertThrows(IllegalArgumentException.class, () -> factory.getSortingAlgorithm("InvalidSort"));
         assertEquals("Invalid sorting algorithm type: InvalidSort", exception.getMessage());
     }
+
+    @Test
+    void testGetSortingAlgorithm_ParallelMergeSort() {
+        SortingAlgorithmFactory factory = new SortingAlgorithmFactory();
+        SortingAlgorithm algorithm = factory.getSortingAlgorithm("ParallelMergeSort");
+        assertInstanceOf(ParallelMergeSort.class, algorithm);
+    }
 }
