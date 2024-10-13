@@ -10,6 +10,7 @@ import java.text.DecimalFormat;
 public class TimeUtils {
 
     private TimeUtils() {
+        throw new IllegalStateException("Utility class");
     }
 
     /**

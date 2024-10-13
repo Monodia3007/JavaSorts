@@ -16,7 +16,7 @@ public class SortingAlgorithmFactory {
 
     /**
      * The SortingAlgorithmFactory class is responsible for creating instances of various sorting algorithms. It
-     * initializes a map of sorting algorithms with their corresponding names.
+     * initialises a map of sorting algorithms with their corresponding names.
      */
     public SortingAlgorithmFactory() {
         initializeSortingAlgorithms();

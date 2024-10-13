@@ -3,15 +3,30 @@ package eu.lilithmonodia.javasorts.util;
 
 import org.junit.jupiter.api.Test;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.logging.Logger;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * The TimeUtilsTest class is responsible for testing the TimeUtils class.
  */
 class TimeUtilsTest {
     private static final Logger logger = Logger.getLogger(TimeUtilsTest.class.getName());
+
+    @Test
+    void testPrivateConstructor() {
+        try {
+            Constructor<TimeUtils> constructor = TimeUtils.class.getDeclaredConstructor();
+            constructor.setAccessible(true);
+            Exception exception = assertThrows(InvocationTargetException.class, constructor::newInstance);
+            assertInstanceOf(IllegalStateException.class, exception.getCause());
+            assertEquals("Utility class", exception.getCause().getMessage());
+        } catch (NoSuchMethodException e) {
+            fail("Unexpected exception: " + e.getMessage());
+        }
+    }
 
     /**
      * This method is used to test the formatNanos method of the TimeUtils class. It tests the formatNanos method for
