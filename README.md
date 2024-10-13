@@ -1,5 +1,7 @@
 ## JavaSorts Program
 
+[![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=Monodia3007_JavaSorts)](https://sonarcloud.io/summary/new_code?id=Monodia3007_JavaSorts)
+
 The JavaSorts program is a command-line application that allows the user to generate a random list of integers and apply
 various sorting algorithms to it. The performance of each algorithm is timed, and the program logs the execution time of
 each algorithm to a database.
@@ -37,6 +39,7 @@ The following sorting algorithms are available in this program.
     - SelectionSort
     - ShellSort
     - TimSort
+  - ParallelMergeSort
 - Impractical Sorting Algorithms:
     - BogoSort
     - BozoSort
