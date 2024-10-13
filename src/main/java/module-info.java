@@ -1,16 +1,16 @@
 /**
- * Java module descriptor for the eu.lilithmonodia.javasorts module.
+ * The `eu.lilithmonodia.javasorts` module definition.
  * <p>
- * This module requires several dependencies for its functionality:
+ * This module includes the following dependencies:
  * <ul>
- * <li>Requires com.google.gson – for working with JSON data.</li>
- * <li>Requires java.sql – for JDBC API to access and process data stored
- *                      in relational databases.</li>
- * <li>Requires javafx.controls – for JavaFX user interface controls.</li>
- * <li>Requires javafx.graphics – for JavaFX graphics capabilities.</li>
- * <li>Requires org.apache.commons.io – for utilities to help with IO operations.</li>
- * <li>Requires org.jetbrains.annotations – for JetBrains' annotations like @NotNull, @Nullable, etc.</li>
+ * <li>`com.google.gson`: For JSON parsing and serialization.</li>
+ * <li>`java.sql`: For SQL database access.</li>
+ * <li>`javafx.controls`: For JavaFX user interface controls.</li>
+ * <li>`javafx.graphics`: For JavaFX graphics support.</li>
+ * <li>`org.apache.commons.io`: For Apache Commons IO utilities.</li>
+ * <li>`org.jetbrains.annotations`: For JetBrains annotations.</li>
  * </ul>
+ * This module exports the `eu.lilithmonodia.javasorts` package.
  */
 module eu.lilithmonodia.javasorts {
     requires com.google.gson;
@@ -19,4 +19,6 @@ module eu.lilithmonodia.javasorts {
     requires javafx.graphics;
     requires org.apache.commons.io;
     requires org.jetbrains.annotations;
+
+    exports eu.lilithmonodia.javasorts;
 }
