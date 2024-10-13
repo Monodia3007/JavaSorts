@@ -40,11 +40,12 @@ public abstract class SortingAlgorithm {
     public abstract void sort(List<Integer> list);
 
     /**
-     * Displays the original list, sorts it using the specified algorithm, and measures the time taken.
+     * Displays the original and sorted list, along with the time taken to sort the list.
      *
-     * @param list          The list to be sorted.
-     * @param algorithmName The name of the sorting algorithm being used.
-     * @param outputSb      The optional StringBuilder to which the output will be appended.
+     * @param list          the list of integers to be sorted and displayed
+     * @param algorithmName the name of the sorting algorithm being used
+     * @param outputSb      a {@code StringBuilder} to accumulate the output, if not null, otherwise uses logging
+     * @param rawDuration   a {@code StringBuilder} to store the raw duration in nanoseconds
      */
     public void displayAndTime(@NotNull List<Integer> list, String algorithmName, StringBuilder outputSb, @NotNull StringBuilder rawDuration) {
         String original = "Original List for " + algorithmName + " (first 10 elements): " + list.subList(0, Math.min(list.size(), 10)) + "... ";

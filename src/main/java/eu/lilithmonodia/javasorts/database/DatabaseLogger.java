@@ -36,11 +36,12 @@ public class DatabaseLogger {
     }
 
     /**
-     * Adds a log entry to the database.
+     * Adds a log entry to the database with the given sorting details.
      *
-     * @param formatedSortingTime the time taken for the sorting process
-     * @param listSize            the size of the list being sorted
-     * @param algorithm           the algorithm used for sorting
+     * @param rawSortingTime      the raw sorting duration in milliseconds.
+     * @param formatedSortingTime the formatted sorting duration as a string.
+     * @param listSize            the size of the list that was sorted.
+     * @param algorithm           the name of the sorting algorithm used.
      */
     public void addLog(long rawSortingTime, String formatedSortingTime, int listSize, String algorithm) {
         try (Connection conn = this.connect()) {
