@@ -35,6 +35,7 @@ class TimeUtilsTest {
     @Test
     void testFormatNanos() {
         logger.info("Running test for formatNanos method...");
+        assertEquals("0.00 ns", TimeUtils.formatNanos(0));
         assertEquals("500.00 ns", TimeUtils.formatNanos(500));
         assertEquals("1.00 us", TimeUtils.formatNanos(1_000));
         assertEquals("1.00 ms", TimeUtils.formatNanos(1_000_000));
