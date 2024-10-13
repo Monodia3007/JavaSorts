@@ -27,7 +27,7 @@ public class Launcher {
      */
     public static void main(String @NotNull [] args) {
         if (args.length >= 1 && args[0].equals("--help")) {
-            LOGGER.log(Level.INFO ,"Usage: java -jar <file-name>.jar --console or java -jar <file-name>.jar");
+            LOGGER.log(Level.INFO, "Usage: java -jar <file-name>.jar --console or java -jar <file-name>.jar");
         } else if (args.length >= 1 && args[0].equals("--console")) {
             JavaSortsMain.main(args);
         } else if (args.length == 0) {

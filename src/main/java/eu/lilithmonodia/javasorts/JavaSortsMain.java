@@ -130,9 +130,9 @@ public class JavaSortsMain {
     /**
      * Handles the completion of a single Future task.
      *
-     * @param name       the name of the task
-     * @param listSize   the size of the list
-     * @param outputSb   the StringBuilder containing the output
+     * @param name        the name of the task
+     * @param listSize    the size of the list
+     * @param outputSb    the StringBuilder containing the output
      * @param rawDuration the StringBuilder containing the raw duration
      */
     private static void handleSingleFuture(String name, int listSize, @NotNull StringBuilder outputSb, @NotNull StringBuilder rawDuration) {
@@ -146,9 +146,9 @@ public class JavaSortsMain {
     /**
      * Logs the elapsed time for a sorting operation on a list.
      *
-     * @param name       the algorithm name used for sorting
-     * @param listSize   the size of the list being sorted
-     * @param output     the output containing the formatted duration of the sorting operation
+     * @param name        the algorithm name used for sorting
+     * @param listSize    the size of the list being sorted
+     * @param output      the output containing the formatted duration of the sorting operation
      * @param rawDuration the raw duration of the sorting operation
      */
     private static void logElapsedTime(String name, int listSize, String output, long rawDuration) {

@@ -39,10 +39,10 @@ public class DatabaseLogger {
      * Adds a log entry to the database.
      *
      * @param formatedSortingTime the time taken for the sorting process
-     * @param listSize    the size of the list being sorted
-     * @param algorithm   the algorithm used for sorting
+     * @param listSize            the size of the list being sorted
+     * @param algorithm           the algorithm used for sorting
      */
-    public void addLog(long rawSortingTime,String formatedSortingTime, int listSize, String algorithm) {
+    public void addLog(long rawSortingTime, String formatedSortingTime, int listSize, String algorithm) {
         try (Connection conn = this.connect()) {
             if (conn == null) {
                 LOG.warning("Connection to database could not be established");

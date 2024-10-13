@@ -68,19 +68,11 @@ class SortingAlgorithmTest {
     }
 
     /**
-     * A dummy sorting algorithm implementation that sorts a list of integers using the {@link Collections#sort(List)}
+     * A test double sorting algorithm implementation
+     * that sorts a list of integers using the {@link Collections#sort(List)}
      * method.
      *
      * <p>This class extends the {@link SortingAlgorithm} abstract class.</p>
-     *
-     * <p>Usage:
-     *
-     * <pre>{@code
-     * DummySortAlgorithm algorithm = new DummySortAlgorithm();
-     * List<Integer> myList = Arrays.asList(5, 2, 9, 1, 3);
-     * algorithm.sort(myList);
-     * }</pre>
-     * </p>
      */
     private static class DummySortAlgorithm extends SortingAlgorithm {
         /**
