@@ -22,29 +22,35 @@ public class TimeUtils {
     public static @NotNull String formatNanos(long nanos) {
         DecimalFormat df = new DecimalFormat("0.00");
 
-        double scaledNanos = nanos;
+        final long[] thresholds = {
+                86_400_000_000_000L, // days
+                3_600_000_000_000L,  // hours
+                60_000_000_000L,     // minutes
+                1_000_000_000L,      // seconds
+                1_000_000L,          // milliseconds
+                1_000L,              // microseconds
+                1                   // nanoseconds
+        };
 
-        if (scaledNanos >= 86_400_000_000_000L) {
-            scaledNanos /= 86_400_000_000_000L;
-            return df.format(scaledNanos) + " d";
-        } else if (scaledNanos >= 3_600_000_000_000L) {
-            scaledNanos /= 3_600_000_000_000L;
-            return df.format(scaledNanos) + " h";
-        } else if (scaledNanos >= 60_000_000_000L) {
-            scaledNanos /= 60_000_000_000L;
-            return df.format(scaledNanos) + " min";
-        } else if (scaledNanos >= 1_000_000_000) {
-            scaledNanos /= 1_000_000_000;
-            return df.format(scaledNanos) + " s";
-        } else if (scaledNanos >= 1_000_000) {
-            scaledNanos /= 1_000_000;
-            return df.format(scaledNanos) + " ms";
-        } else if (scaledNanos >= 1_000) {
-            scaledNanos /= 1_000;
-            return df.format(scaledNanos) + " us";
-        } else {
-            scaledNanos /= 1;
-            return df.format(scaledNanos) + " ns";
+        final String[] units = {
+                " d",
+                " h",
+                " min",
+                " s",
+                " ms",
+                " us",
+                " ns"
+        };
+
+        double scaledNanos = nanos;
+        for (int i = 0; i < thresholds.length; i++) {
+            if (scaledNanos >= thresholds[i]) {
+                scaledNanos /= thresholds[i];
+                return df.format(scaledNanos) + units[i];
+            }
         }
+
+        // Fallback, should not reach here unless input is less than 1 ns
+        return df.format(scaledNanos) + " ns";
     }
 }
