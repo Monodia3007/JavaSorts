@@ -3,9 +3,9 @@ package eu.lilithmonodia.javasorts.sorts.impracticalsorts;
 import eu.lilithmonodia.javasorts.sorts.SortingAlgorithm;
 import org.jetbrains.annotations.NotNull;
 
+import java.security.SecureRandom;
 import java.util.Collections;
 import java.util.List;
-import java.util.Random;
 
 /**
  * This class implements the BozoSort algorithm for sorting a list of integers. It extends the SortingAlgorithm class.
@@ -13,7 +13,7 @@ import java.util.Random;
  * @see SortingAlgorithm
  */
 public class BozoSort extends SortingAlgorithm {
-    private static final Random RANDOM = new Random();
+    private static final SecureRandom RANDOM = new SecureRandom();
 
     /**
      * Checks whether the given list of integers is sorted in non-decreasing order.

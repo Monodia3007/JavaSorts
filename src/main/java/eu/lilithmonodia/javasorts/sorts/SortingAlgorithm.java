@@ -3,9 +3,9 @@ package eu.lilithmonodia.javasorts.sorts;
 import eu.lilithmonodia.javasorts.util.TimeUtils;
 import org.jetbrains.annotations.NotNull;
 
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import java.util.logging.Logger;
 
 /**
@@ -15,7 +15,7 @@ import java.util.logging.Logger;
  */
 public abstract class SortingAlgorithm {
 
-    private static final Random RANDOM = new Random();
+    private static final SecureRandom RANDOM = new SecureRandom();
     private static final Logger LOGGER = Logger.getLogger(SortingAlgorithm.class.getName());
 
     /**
