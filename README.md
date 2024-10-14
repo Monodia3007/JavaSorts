@@ -8,7 +8,8 @@ each algorithm to a database.
 
 ### Core Classes
 
-- `JavaSortsMain`: This is the main class of the JavaSorts program. It initializes a `SortingAlgorithmFactory` to create
+- `JavaSortsMain`: This is the main class of the JavaSorts program.
+  It initialises a `SortingAlgorithmFactory` to create
   different sorting algorithm objects, receives the user's input, performs the sorting tasks using multiple algorithms,
   and logs the results in a database.
 

@@ -56,7 +56,7 @@ public class TimeUtils {
             }
         }
 
-        // Fallback, should not reach here unless input is less than 1 ns
+        // Fallback shouldn't reach here unless input is less than 1 ns
         return df.format(scaledNanos) + " ns";
     }
 }

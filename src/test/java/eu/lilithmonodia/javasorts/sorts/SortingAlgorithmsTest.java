@@ -38,7 +38,7 @@ class SortingAlgorithmsTest {
     /**
      * This method is used to test the sorting algorithm implemented by the SortingAlgorithmFactory. It tests the
      * sorting algorithm for each algorithm available in the ALGORITHMS list, using a sample list of integers. The
-     * method compares the sorted copy of the list with the expected sorted result and asserts that they are equal. Note
+     * method compares the sorted copy of the list with the expected sorted result and asserts that they're equal. Note
      * that a copy of the list is created before sorting, as each sorting algorithm modifies the list.
      */
     @Test
@@ -48,7 +48,7 @@ class SortingAlgorithmsTest {
 
         for (String algorithm : ALGORITHMS) {
             SortingAlgorithm sorter = factory.getSortingAlgorithm(algorithm);
-            List<Integer> copy = new ArrayList<>(list); // Creating a copy of list as each sorter modifies the list.
+            List<Integer> copy = new ArrayList<>(list); // Creating a copy of a list as each sorter modifies the list.
             sorter.sort(copy);
 
             assertArrayEquals(new Integer[]{1, 2, 3, 4, 5}, copy.toArray(new Integer[0]),
@@ -69,7 +69,7 @@ class SortingAlgorithmsTest {
 
         for (String algorithm : ALGORITHMS) {
             SortingAlgorithm sorter = factory.getSortingAlgorithm(algorithm);
-            List<Integer> copy = new ArrayList<>(list); // Creating a copy of list as each sorter modifies the list.
+            List<Integer> copy = new ArrayList<>(list); // Creating a copy of a list as each sorter modifies the list.
             sorter.sort(copy);
 
             assertTrue(copy.isEmpty(), "List should be empty after sorting with algorithm: " + algorithm);
@@ -90,7 +90,7 @@ class SortingAlgorithmsTest {
 
         for (String algorithm : ALGORITHMS) {
             SortingAlgorithm sorter = factory.getSortingAlgorithm(algorithm);
-            List<Integer> copy = new ArrayList<>(list); // Creating a copy of list as each sorter modifies the list.
+            List<Integer> copy = new ArrayList<>(list); // Creating a copy of a list as each sorter modifies the list.
             sorter.sort(copy);
 
             assertArrayEquals(new Integer[]{3}, copy.toArray(new Integer[0]),

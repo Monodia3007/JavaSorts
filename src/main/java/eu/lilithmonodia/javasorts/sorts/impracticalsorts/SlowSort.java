@@ -17,7 +17,7 @@ import java.util.List;
 public class SlowSort extends SortingAlgorithm {
 
     /**
-     * Sorts the given list in ascending order using slow sort algorithm.
+     * Sorts the given list in ascending order using the slow sort algorithm.
      *
      * @param list the list of integers to be sorted
      */
@@ -27,7 +27,7 @@ public class SlowSort extends SortingAlgorithm {
     }
 
     /**
-     * Recursive helper method for slow sort algorithm. Sorts the sublist between the specified left and right indices
+     * Recursive helper method for slow sort algorithm. Sorts the sublist between the specified left and right indexes
      * in ascending order.
      *
      * @param list  the list of integers to be sorted

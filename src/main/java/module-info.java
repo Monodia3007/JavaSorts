@@ -21,4 +21,5 @@ module eu.lilithmonodia.javasorts {
     requires org.jetbrains.annotations;
 
     exports eu.lilithmonodia.javasorts;
+    exports eu.lilithmonodia.javasorts.sorts;
 }

@@ -22,7 +22,7 @@ public class SelectionSort extends SortingAlgorithm {
     public void sort(@NotNull List<Integer> list) {
         int n = list.size();
 
-        // One by one move boundary of unsorted subarray
+        // One by one move the boundary of unsorted subarray
         for (int i = 0; i < n - 1; i++) {
             // Find the minimum element in an unsorted array
             int minIndex = i;

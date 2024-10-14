@@ -54,7 +54,7 @@ public class StoogeSort extends SortingAlgorithm {
             // Recursively sort last 2/3 elements
             stoogeSort(list, l + t, h);
 
-            // Recursively sort first 2/3 elements
+            // Recursively sort the first 2/3 elements
             // again to confirm
             stoogeSort(list, l, h - t);
         }

@@ -22,7 +22,7 @@ public class RadixSort extends SortingAlgorithm {
      */
     private static int findMax(@NotNull List<Integer> list) {
         if (list.isEmpty()) {
-            return -1; // Indicates list is empty. This value won't affect the actual algorithm.
+            return -1; // Indicates a list is empty. This value won't affect the actual algorithm.
         }
         int max = list.get(0);
         for (Integer integer : list) {
