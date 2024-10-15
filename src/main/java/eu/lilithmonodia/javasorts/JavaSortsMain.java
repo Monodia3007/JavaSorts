@@ -45,8 +45,7 @@ public class JavaSortsMain {
 
             if (listLength == -1) break;
 
-            List<Integer> list = generateRandomList(listLength);
-            performAndLogSortingTasks(list, algorithmNames, sortingAlgorithmFactory);
+            performAndLogSortingTasks(listLength, algorithmNames, sortingAlgorithmFactory);
         }
 
         LOGGER.log(Level.INFO, "Program has been terminated.");
@@ -79,11 +78,12 @@ public class JavaSortsMain {
     /**
      * Executes sorting tasks using different sorting algorithms and logs the execution of each task.
      *
-     * @param list                    the list of integers to be sorted
+     * @param listLength              the length of the list of integers to be sorted
      * @param algorithmNames          an array of strings representing the names of the sorting algorithms to be used
      * @param sortingAlgorithmFactory the factory object used to create instances of sorting algorithms
      */
-    private static void performAndLogSortingTasks(List<Integer> list, String @NotNull [] algorithmNames, SortingAlgorithmFactory sortingAlgorithmFactory) {
+    private static void performAndLogSortingTasks(long listLength, String @NotNull [] algorithmNames, SortingAlgorithmFactory sortingAlgorithmFactory) {
+        ArrayList<Integer> list = new ArrayList<>(generateRandomList(listLength));
         ExecutorService executor = Executors.newFixedThreadPool(algorithmNames.length);
         List<CompletableFuture<Void>> futures = new ArrayList<>();
 
